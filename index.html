@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>LIFE XP - Tu Vida Como Videojuego (life-xp-tic.com)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LIFE XP - Tu Vida Como Videojuego (PC Desktop)</title>
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <!-- FontAwesome Icons -->
@@ -31,7 +31,7 @@
       --sidebar-width: 260px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-tap-highlight-color: transparent; }
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
 
     body, html {
       font-family: 'Inter', sans-serif;
@@ -57,7 +57,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 15px;
+      padding: 20px;
       overflow-y: auto;
     }
 
@@ -66,21 +66,32 @@
       border: 2px solid var(--gold-primary);
       box-shadow: 0 0 35px var(--gold-glow);
       border-radius: 20px;
-      padding: 20px 25px;
+      padding: 25px 30px;
       width: 880px;
       max-width: 100%;
-      max-height: 95vh;
-      overflow-y: auto;
     }
 
-    .wizard-header { text-align: center; margin-bottom: 15px; }
-    .wizard-title { font-family: 'Orbitron', sans-serif; font-size: 1.6rem; color: var(--gold-light); margin-bottom: 3px; }
-    .wizard-subtitle { font-size: 0.8rem; color: var(--text-muted); }
+    .wizard-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .wizard-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--gold-light);
+      margin-bottom: 5px;
+    }
+
+    .wizard-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
 
     .wizard-body {
       display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: 20px;
+      grid-template-columns: 260px 1fr;
+      gap: 25px;
       align-items: center;
     }
 
@@ -92,227 +103,604 @@
       background: #ffffff;
       border: 2px solid var(--gold-primary);
       border-radius: 16px;
-      padding: 12px;
+      padding: 15px;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
     }
 
-    .avatar-canvas-preview { width: 170px; height: 300px; border-radius: 10px; background: #ffffff; }
+    .avatar-canvas-preview {
+      width: 200px;
+      height: 350px;
+      border-radius: 12px;
+      background: #ffffff;
+    }
 
-    .quiz-questions-panel { display: flex; flex-direction: column; gap: 12px; max-height: 360px; overflow-y: auto; padding-right: 4px; }
+    .quiz-questions-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-height: 400px;
+      overflow-y: auto;
+      padding-right: 5px;
+    }
+
     .quiz-step { display: none; }
-    .quiz-step.active { display: flex; flex-direction: column; gap: 12px; }
+    .quiz-step.active { display: flex; flex-direction: column; gap: 15px; }
 
-    .question-title { font-family: 'Rajdhani', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--gold-primary); text-transform: uppercase; }
+    .question-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+    }
 
-    .options-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 6px; }
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 8px;
+    }
 
     .option-btn {
-      background: var(--navy-secondary); border: 1px solid var(--border-subtle);
-      color: var(--text-main); padding: 7px 8px; border-radius: 8px; font-size: 0.78rem;
-      cursor: pointer; text-align: center; transition: all 0.2s; font-weight: 600;
+      background: var(--navy-secondary);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+      font-weight: 600;
     }
-    .option-btn:hover { border-color: var(--gold-primary); background: var(--bg-card-hover); }
+
+    .option-btn:hover {
+      border-color: var(--gold-primary);
+      background: var(--bg-card-hover);
+    }
+
     .option-btn.selected {
-      border-color: var(--gold-light); background: rgba(245, 158, 11, 0.2);
-      color: var(--gold-light); box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+      border-color: var(--gold-light);
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--gold-light);
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
     }
 
     .color-picker-group {
-      display: flex; align-items: center; gap: 10px;
-      background: var(--navy-secondary); border: 1px solid var(--border-subtle);
-      padding: 8px 12px; border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--navy-secondary);
+      border: 1px solid var(--border-subtle);
+      padding: 10px 14px;
+      border-radius: 10px;
     }
 
-    .color-picker-label { flex-grow: 1; font-size: 0.82rem; color: var(--text-main); font-weight: 600; display: flex; align-items: center; gap: 8px; }
-    .color-wheel-input {
-      -webkit-appearance: none; width: 36px; height: 36px; border: 2px solid var(--gold-primary);
-      border-radius: 50%; cursor: pointer; background: none; padding: 0; overflow: hidden;
+    .color-picker-label {
+      flex-grow: 1;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
+
+    .color-wheel-input {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 42px;
+      height: 42px;
+      border: 2px solid var(--gold-primary);
+      border-radius: 50%;
+      cursor: pointer;
+      background: none;
+      padding: 0;
+      overflow: hidden;
+      box-shadow: 0 0 10px var(--gold-glow);
+      transition: transform 0.2s ease;
+    }
+
+    .color-wheel-input:hover { transform: scale(1.1); }
+    .color-wheel-input::-webkit-color-swatch-wrapper { padding: 0; }
+    .color-wheel-input::-webkit-color-swatch { border: none; border-radius: 50%; }
+    .color-wheel-input::-moz-color-swatch { border: none; border-radius: 50%; }
 
     .form-input {
-      width: 100%; padding: 10px 12px; background: var(--navy-secondary);
-      border: 1px solid var(--border-color); border-radius: 8px; color: #fff; font-size: 0.88rem; outline: none;
+      width: 100%;
+      padding: 11px 14px;
+      background: var(--navy-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
     }
 
-    .wizard-footer { display: flex; justify-content: space-between; margin-top: 15px; padding-top: 12px; border-top: 1px solid var(--border-subtle); }
+    .wizard-footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid var(--border-subtle);
+    }
 
     .btn-action {
-      background: linear-gradient(135deg, var(--gold-primary), #d97706); color: #000; border: none;
-      padding: 9px 18px; border-radius: 8px; font-family: 'Rajdhani', sans-serif; font-weight: 700;
-      font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: linear-gradient(135deg, var(--gold-primary), #d97706);
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
-    .btn-secondary { background: var(--navy-secondary); color: var(--text-main); border: 1px solid var(--border-subtle); padding: 9px 16px; border-radius: 8px; font-size: 0.85rem; cursor: pointer; }
 
-    /* APP CONTAINER FULLSCREEN */
-    #app-container { display: flex; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; overflow: hidden; }
+    .btn-action:hover {
+      box-shadow: 0 0 15px var(--gold-glow);
+      transform: scale(1.02);
+    }
 
-    /* SIDEBAR DESKTOP & TV */
+    .btn-secondary {
+      background: var(--navy-secondary);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* MAIN APP LAYOUT - FULL SCREEN */
+    #app-container {
+      display: flex;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
     .sidebar {
-      width: var(--sidebar-width); background-color: var(--bg-card); border-right: 1px solid var(--border-color);
-      display: flex; flex-direction: column; justify-content: space-between; z-index: 1000; height: 100%;
+      width: var(--sidebar-width);
+      background-color: var(--bg-card);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 1000;
+      box-shadow: 4px 0 20px rgba(0,0,0,0.5);
+      height: 100%;
     }
 
-    .brand-header { padding: 18px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--border-subtle); background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(245, 158, 11, 0.1)); }
-    .brand-icon { width: 38px; height: 38px; background: linear-gradient(135deg, var(--gold-primary), #b45309); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #000; }
-    .brand-title { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.1rem; background: linear-gradient(to right, #fff, var(--gold-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .brand-sub { font-size: 0.6rem; color: var(--gold-primary); text-transform: uppercase; font-weight: 600; }
+    .brand-header {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(245, 158, 11, 0.1));
+    }
 
-    .nav-menu { list-style: none; padding: 12px 8px; display: flex; flex-direction: column; gap: 5px; flex-grow: 1; }
+    .brand-icon {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--gold-primary), #b45309);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; color: #000;
+      box-shadow: 0 0 15px var(--gold-glow);
+    }
+
+    .brand-title {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 1.2rem;
+      letter-spacing: 1.5px;
+      background: linear-gradient(to right, #fff, var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-sub {
+      font-size: 0.65rem;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .nav-menu {
+      list-style: none;
+      padding: 15px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex-grow: 1;
+    }
+
     .nav-item {
-      display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 8px;
-      color: var(--text-muted); cursor: pointer; font-family: 'Rajdhani', sans-serif; font-size: 1rem; font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      border: 1px solid transparent;
     }
-    .nav-item:hover { background: var(--bg-card-hover); color: var(--text-main); }
-    .nav-item.active { background: linear-gradient(90deg, rgba(245, 158, 11, 0.15), transparent); color: var(--gold-light); border-left: 4px solid var(--gold-primary); }
-    .nav-item i { font-size: 1.1rem; width: 22px; text-align: center; }
 
-    .sidebar-footer { padding: 12px; border-top: 1px solid var(--border-subtle); background: rgba(15, 23, 42, 0.6); }
-    .university-badge { font-size: 0.65rem; color: var(--text-muted); display: flex; flex-direction: column; }
+    .nav-item:hover {
+      background: var(--bg-card-hover);
+      color: var(--text-main);
+      border-color: rgba(245, 158, 11, 0.2);
+      transform: translateX(4px);
+    }
+
+    .nav-item.active {
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.15), transparent);
+      color: var(--gold-light);
+      border-left: 4px solid var(--gold-primary);
+      border-color: rgba(245, 158, 11, 0.3);
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.1);
+    }
+
+    .nav-item i { font-size: 1.2rem; width: 24px; text-align: center; }
+
+    .sidebar-footer {
+      padding: 15px;
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.6);
+    }
+
+    .university-badge {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
     .university-badge strong { color: var(--gold-light); }
 
-    /* BOTTOM NAV FOR MOBILE / SMART TV */
-    .mobile-nav-bar {
-      display: none; position: fixed; bottom: 0; left: 0; width: 100vw; height: 62px;
-      background: var(--bg-card); border-top: 1px solid var(--border-color); z-index: 2000;
-      justify-content: space-around; align-items: center; padding: 0 5px;
+    .main-wrapper {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: calc(100vw - var(--sidebar-width));
+      overflow: hidden;
+      background-color: var(--bg-dark);
     }
-    .mobile-nav-item {
-      display: flex; flex-direction: column; align-items: center; gap: 3px; color: var(--text-muted);
-      font-size: 0.65rem; font-family: 'Rajdhani', sans-serif; font-weight: 600; cursor: pointer; flex: 1;
-    }
-    .mobile-nav-item i { font-size: 1.2rem; }
-    .mobile-nav-item.active { color: var(--gold-light); }
-
-    /* MAIN WRAPPER */
-    .main-wrapper { flex-grow: 1; display: flex; flex-direction: column; height: 100vh; width: calc(100vw - var(--sidebar-width)); overflow: hidden; background-color: var(--bg-dark); }
 
     .top-hud {
-      height: 65px; background-color: var(--bg-card); border-bottom: 1px solid var(--border-color);
-      display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 900; width: 100%;
+      height: 70px;
+      background-color: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 25px;
+      z-index: 900;
+      width: 100%;
     }
-    .hud-stats { display: flex; align-items: center; gap: 15px; }
-    .user-profile-summary { display: flex; align-items: center; gap: 10px; }
+
+    .hud-stats { display: flex; align-items: center; gap: 25px; }
+
+    .user-profile-summary { display: flex; align-items: center; gap: 12px; }
+
     .avatar-container { position: relative; }
-    .avatar-img-hud { width: 42px; height: 42px; border-radius: 50%; border: 2px solid var(--gold-primary); background: #fff; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .lvl-badge { position: absolute; bottom: -3px; right: -3px; background: var(--gold-primary); color: #000; font-size: 0.6rem; font-weight: 900; padding: 1px 4px; border-radius: 8px; font-family: 'Orbitron'; }
+
+    .avatar-img-hud {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--gold-primary);
+      box-shadow: 0 0 10px var(--gold-glow);
+      background: #ffffff;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .lvl-badge {
+      position: absolute;
+      bottom: -4px; right: -4px;
+      background: var(--gold-primary);
+      color: #000;
+      font-size: 0.65rem;
+      font-weight: 900;
+      padding: 1px 5px;
+      border-radius: 10px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
     .user-text-info { display: flex; flex-direction: column; }
-    .user-name { font-weight: 700; font-size: 0.88rem; color: var(--text-main); }
-    .user-rank { font-size: 0.7rem; color: var(--gold-primary); font-family: 'Rajdhani', sans-serif; font-weight: 600; }
 
-    .xp-bar-container { width: 160px; display: flex; flex-direction: column; gap: 3px; }
-    .xp-text { display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-muted); font-family: 'Rajdhani'; }
-    .xp-track { height: 8px; background: var(--navy-secondary); border-radius: 4px; overflow: hidden; border: 1px solid rgba(245, 158, 11, 0.3); }
-    .xp-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #d97706, var(--gold-light)); transition: width 0.5s ease; }
+    .user-name { font-weight: 700; font-size: 0.95rem; color: var(--text-main); }
 
-    .currency-group { display: flex; align-items: center; gap: 10px; }
-    .currency-card { background: rgba(30, 41, 59, 0.7); border: 1px solid var(--border-subtle); padding: 5px 10px; border-radius: 15px; display: flex; align-items: center; gap: 6px; font-family: 'Orbitron'; font-size: 0.78rem; font-weight: 700; }
-    .currency-card.gold { color: var(--gold-light); }
-    .currency-card.streak { color: #f97316; display: none; }
+    .user-rank { font-size: 0.75rem; color: var(--gold-primary); font-family: 'Rajdhani', sans-serif; font-weight: 600; }
 
-    .hud-controls { display: flex; align-items: center; gap: 10px; }
-    .weather-widget { display: flex; align-items: center; gap: 6px; background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-subtle); padding: 5px 10px; border-radius: 8px; font-size: 0.75rem; color: var(--text-muted); }
-    .btn-audio-toggle { background: var(--navy-secondary); border: 1px solid var(--border-color); color: var(--gold-primary); width: 34px; height: 34px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .xp-bar-container { width: 220px; display: flex; flex-direction: column; gap: 4px; }
 
-    .content-area { flex-grow: 1; position: relative; width: 100%; height: calc(100vh - 65px); overflow: hidden; }
-    .tab-view { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; padding: 20px; overflow-y: auto; }
+    .xp-text { display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); font-family: 'Rajdhani', sans-serif; }
+
+    .xp-track { height: 10px; background: var(--navy-secondary); border-radius: 5px; overflow: hidden; border: 1px solid rgba(245, 158, 11, 0.3); position: relative; }
+
+    .xp-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #d97706, var(--gold-light)); box-shadow: 0 0 10px var(--gold-primary); transition: width 0.5s ease; }
+
+    .currency-group { display: flex; align-items: center; gap: 18px; }
+
+    .currency-card {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid var(--border-subtle);
+      padding: 6px 14px;
+      border-radius: 20px;
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem; font-weight: 700;
+    }
+
+    .currency-card.gold { color: var(--gold-light); border-color: rgba(245, 158, 11, 0.4); }
+    .currency-card.streak { color: #f97316; border-color: rgba(249, 115, 22, 0.4); }
+
+    .hud-controls { display: flex; align-items: center; gap: 15px; }
+
+    .weather-widget {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-subtle);
+      padding: 6px 12px; border-radius: 8px;
+      font-size: 0.8rem; color: var(--text-muted);
+    }
+
+    .btn-audio-toggle {
+      background: var(--navy-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--gold-primary);
+      width: 38px; height: 38px; border-radius: 8px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+
+    .content-area {
+      flex-grow: 1;
+      position: relative;
+      width: 100%;
+      height: calc(100vh - 70px);
+      overflow: hidden;
+    }
+
+    .tab-view {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: none;
+      padding: 25px;
+      overflow-y: auto;
+    }
     .tab-view.active { display: block; }
 
     #view-map { padding: 0; }
     #map-container { width: 100%; height: 100%; z-index: 1; }
 
-    .avatar-map-marker { width: 45px; height: 65px; position: relative; cursor: pointer; filter: drop-shadow(0 0 8px var(--gold-primary)); }
-    .avatar-map-marker canvas { width: 100%; height: 100%; border-radius: 6px; }
+    .avatar-map-marker {
+      width: 50px;
+      height: 70px;
+      position: relative;
+      cursor: pointer;
+      filter: drop-shadow(0 0 10px var(--gold-primary));
+      transition: transform 0.2s ease;
+    }
+    .avatar-map-marker:hover { transform: scale(1.15); }
+    .avatar-map-marker canvas { width: 100%; height: 100%; border-radius: 8px; }
 
-    .map-overlay-controls { position: absolute; top: 15px; right: 15px; z-index: 800; display: flex; flex-direction: column; gap: 8px; }
-    .map-card-panel { background: rgba(18, 24, 38, 0.92); backdrop-filter: blur(8px); border: 1px solid var(--border-color); padding: 12px; border-radius: 10px; width: 250px; }
-    .map-card-title { font-family: 'Orbitron', sans-serif; font-size: 0.82rem; color: var(--gold-light); margin-bottom: 8px; display: flex; justify-content: space-between; }
-    .filter-btn-group { display: flex; flex-wrap: wrap; gap: 5px; }
-    .filter-chip { background: var(--navy-secondary); border: 1px solid var(--border-subtle); color: var(--text-muted); padding: 4px 8px; border-radius: 12px; font-size: 0.7rem; cursor: pointer; }
-    .filter-chip.active { background: var(--gold-primary); color: #000; font-weight: bold; }
+    .map-overlay-controls { position: absolute; top: 20px; right: 20px; z-index: 800; display: flex; flex-direction: column; gap: 10px; }
 
-    .view-header { margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
-    .view-title { font-family: 'Orbitron', sans-serif; font-size: 1.25rem; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
+    .map-card-panel {
+      background: rgba(18, 24, 38, 0.92);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-color);
+      padding: 15px; border-radius: 12px; width: 280px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .map-card-title { font-family: 'Orbitron', sans-serif; font-size: 0.9rem; color: var(--gold-light); margin-bottom: 10px; display: flex; justify-content: space-between; }
+
+    .filter-btn-group { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .filter-chip {
+      background: var(--navy-secondary);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 5px 10px; border-radius: 15px; font-size: 0.75rem; cursor: pointer;
+    }
+
+    .filter-chip.active, .filter-chip:hover { background: var(--gold-primary); color: #000; font-weight: bold; }
+
+    .view-header { margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+
+    .view-title { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; color: var(--text-main); display: flex; align-items: center; gap: 10px; }
     .view-title i { color: var(--gold-primary); }
 
-    .quests-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+    .quests-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+
     .quest-card {
-      background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 15px;
-      display: flex; flex-direction: column; justify-content: space-between; gap: 12px; position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px; padding: 18px;
+      display: flex; flex-direction: column; justify-content: space-between; gap: 15px;
+      position: relative; overflow: hidden;
+      transition: all 0.3s ease;
     }
+
+    .quest-card:hover { border-color: var(--gold-primary); transform: translateY(-4px); box-shadow: 0 8px 20px rgba(245, 158, 11, 0.15); }
+
     .quest-card.rainy-type { border-left: 4px solid var(--accent-cyan); }
     .quest-card.group-type { border-left: 4px solid var(--accent-purple); }
     .quest-card.solo-type { border-left: 4px solid var(--gold-primary); }
-    .quest-card.completed { border-color: var(--accent-green) !important; background: linear-gradient(135deg, var(--bg-card) 0%, rgba(16, 185, 129, 0.08) 100%); }
 
-    .quest-tag { position: absolute; top: 10px; right: 10px; font-size: 0.6rem; font-weight: 800; text-transform: uppercase; padding: 2px 6px; border-radius: 8px; font-family: 'Orbitron'; }
+    .quest-card.completed {
+      border-color: var(--accent-green) !important;
+      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(16, 185, 129, 0.08) 100%);
+      opacity: 0.9;
+    }
+
+    .quest-tag { position: absolute; top: 12px; right: 12px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; padding: 3px 8px; border-radius: 10px; font-family: 'Orbitron', sans-serif; }
     .quest-tag.rainy { background: rgba(6, 182, 212, 0.2); color: var(--accent-cyan); }
     .quest-tag.group { background: rgba(139, 92, 246, 0.2); color: var(--accent-purple); }
     .quest-tag.solo { background: rgba(245, 158, 11, 0.2); color: var(--gold-light); }
 
-    .quest-title { font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
-    .quest-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.35; }
-    .quest-rewards { display: flex; gap: 10px; font-size: 0.75rem; font-weight: 700; font-family: 'Orbitron'; }
+    .quest-title { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 5px; }
+    .quest-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
+
+    .quest-rewards { display: flex; gap: 12px; font-size: 0.8rem; font-weight: 700; font-family: 'Orbitron', sans-serif; }
     .reward-xp { color: var(--gold-light); }
     .reward-coins { color: #f59e0b; }
 
     .btn-completed-badge {
-      background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid var(--accent-green);
-      padding: 8px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 0.88rem;
-      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-green);
+      border: 1px solid var(--accent-green);
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .attached-evidence-preview { width: 36px; height: 36px; border-radius: 5px; object-fit: cover; border: 1px solid var(--accent-green); }
 
-    .rewards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
-    .reward-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 15px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-    .reward-icon { width: 50px; height: 50px; border-radius: 50%; background: rgba(245, 158, 11, 0.1); border: 1px solid var(--gold-primary); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--gold-light); }
+    .attached-evidence-preview {
+      width: 42px; height: 42px; border-radius: 6px; object-fit: cover; border: 1px solid var(--accent-green);
+    }
 
-    .profile-dashboard { display: grid; grid-template-columns: 280px 1fr; gap: 15px; }
-    .profile-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 15px; text-align: center; }
-    .profile-avatar-display { width: 170px; height: 300px; border-radius: 10px; border: 2px solid var(--gold-light); margin: 0 auto 12px; background: #fff; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .legal-panel { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 15px; line-height: 1.5; font-size: 0.82rem; }
+    .rewards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 
-    .toggle-switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+    .reward-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 20px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+
+    .reward-icon { width: 60px; height: 60px; border-radius: 50%; background: rgba(245, 158, 11, 0.1); border: 1px solid var(--gold-primary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--gold-light); }
+
+    .profile-dashboard { display: grid; grid-template-columns: 320px 1fr; gap: 20px; }
+
+    .profile-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; text-align: center; }
+
+    .profile-avatar-display {
+      width: 200px; height: 350px; border-radius: 12px;
+      border: 2px solid var(--gold-light); box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      margin: 0 auto 15px; background: #ffffff;
+      overflow: hidden; display: flex; align-items: center; justify-content: center;
+    }
+
+    .legal-panel { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 20px; line-height: 1.6; }
+
+    .toggle-switch { position: relative; display: inline-block; width: 50px; height: 26px; }
     .toggle-switch input { opacity: 0; width: 0; height: 0; }
-    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--navy-secondary); transition: .4s; border-radius: 24px; border: 1px solid var(--border-subtle); }
-    .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
-    input:checked + .slider { background-color: var(--gold-primary); }
-    input:checked + .slider:before { transform: translateX(20px); background-color: #000; }
 
-    /* MODALES */
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); backdrop-filter: blur(6px); z-index: 3000; display: none; align-items: center; justify-content: center; padding: 15px; }
-    .modal-card { background: var(--bg-card); border: 2px solid var(--gold-primary); border-radius: 16px; padding: 20px; max-width: 440px; width: 95%; text-align: center; box-shadow: 0 0 35px var(--gold-glow); display: flex; flex-direction: column; gap: 12px; }
-    .modal-icon { font-size: 2.4rem; color: var(--gold-light); }
-    .camera-box-area { position: relative; width: 100%; height: 220px; background: #000; border: 2px solid var(--gold-primary); border-radius: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    #webcam-video, #photo-canvas { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
-    #photo-canvas { display: none; z-index: 2; }
-    .camera-placeholder-text { color: var(--text-muted); font-size: 0.8rem; z-index: 3; display: flex; flex-direction: column; gap: 6px; align-items: center; }
-
-    .reward-ticket-card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 2px dashed var(--gold-primary); border-radius: 12px; padding: 15px; text-align: left; margin: 8px 0; }
-    .ticket-header { font-family: 'Orbitron'; font-size: 0.7rem; color: var(--gold-primary); margin-bottom: 5px; display: flex; justify-content: space-between; }
-    .ticket-title { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 3px; }
-    .ticket-store { font-size: 0.78rem; color: var(--text-muted); }
-    .ticket-code { margin-top: 10px; background: rgba(0,0,0,0.4); padding: 6px; border-radius: 6px; font-family: 'Orbitron'; font-size: 0.85rem; color: var(--gold-light); text-align: center; letter-spacing: 1px; border: 1px solid var(--border-subtle); }
-
-    /* RESPONSIVE BREAKPOINTS PARA CELULARES Y SMART TV */
-    @media (max-width: 768px) {
-      .sidebar { display: none; }
-      .mobile-nav-bar { display: flex; }
-      .main-wrapper { width: 100vw; height: calc(100vh - 62px); }
-      .wizard-body { grid-template-columns: 1fr; }
-      .avatar-preview-container { display: none; }
-      .xp-bar-container { display: none; }
-      .currency-card.streak { display: flex; }
-      .profile-dashboard { grid-template-columns: 1fr; }
+    .slider {
+      position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+      background-color: var(--navy-secondary); transition: .4s; border-radius: 34px; border: 1px solid var(--border-subtle);
     }
 
-    @media (min-width: 1600px) {
-      body { font-size: 1.15rem; }
-      .sidebar { width: 320px; }
-      .main-wrapper { width: calc(100vw - 320px); }
-      .top-hud { height: 80px; padding: 0 35px; }
-      .brand-title { font-size: 1.4rem; }
-      .nav-item { font-size: 1.2rem; padding: 14px 20px; }
-      .quests-grid, .rewards-grid { grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); }
+    .slider:before {
+      position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 3px;
+      background-color: white; transition: .4s; border-radius: 50%;
+    }
+
+    input:checked + .slider { background-color: var(--gold-primary); }
+    input:checked + .slider:before { transform: translateX(22px); background-color: #000; }
+
+    /* MODALES DE CÁMARA Y CELEBRACIÓN */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 2000;
+      display: none; align-items: center; justify-content: center;
+    }
+
+    .modal-card {
+      background: var(--bg-card); border: 2px solid var(--gold-primary);
+      border-radius: 16px; padding: 25px; max-width: 480px; width: 92%;
+      text-align: center; box-shadow: 0 0 35px var(--gold-glow);
+      display: flex; flex-direction: column; gap: 15px;
+    }
+
+    .modal-icon { font-size: 2.8rem; color: var(--gold-light); }
+
+    .camera-box-area {
+      position: relative;
+      width: 100%; height: 260px;
+      background: #000000;
+      border: 2px solid var(--gold-primary);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #webcam-video, #photo-canvas {
+      width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;
+    }
+
+    #photo-canvas { display: none; z-index: 2; }
+
+    .camera-placeholder-text {
+      color: var(--text-muted); font-size: 0.85rem; z-index: 3; display: flex; flex-direction: column; gap: 8px; align-items: center;
+    }
+
+    /* TARJETA DE PREMIO OBTENIDO */
+    .reward-ticket-card {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border: 2px dashed var(--gold-primary);
+      border-radius: 14px;
+      padding: 18px;
+      text-align: left;
+      position: relative;
+      margin: 10px 0;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+    }
+    .ticket-header {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .ticket-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .ticket-store {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .ticket-code {
+      margin-top: 12px;
+      background: rgba(0,0,0,0.4);
+      padding: 8px;
+      border-radius: 8px;
+      font-family: 'Orbitron', monospace;
+      font-size: 0.9rem;
+      color: var(--gold-light);
+      text-align: center;
+      letter-spacing: 2px;
+      border: 1px solid var(--border-subtle);
     }
   </style>
 </head>
@@ -328,31 +716,33 @@
 
       <div class="wizard-body">
         <div class="avatar-preview-container">
-          <canvas id="quiz-avatar-canvas" class="avatar-canvas-preview" width="170" height="300"></canvas>
-          <span style="font-size: 0.7rem; color: #000; margin-top: 8px; font-family: 'Orbitron'; font-weight: bold;">Studio Render</span>
+          <canvas id="quiz-avatar-canvas" class="avatar-canvas-preview" width="200" height="350"></canvas>
+          <span style="font-size: 0.75rem; color: #000000; margin-top: 10px; font-family: 'Orbitron'; font-weight: bold;">
+            Studio Render
+          </span>
         </div>
 
         <div class="quiz-questions-panel">
           <div class="quiz-step active" id="step-1">
             <div class="question-title">1. Registro de Explorador</div>
             <div>
-              <label style="font-size: 0.78rem; color: var(--text-muted); display: block; margin-bottom: 4px;">Tu Nombre de Héroe / Alias</label>
-              <input type="text" id="username-input" class="form-input" placeholder="Ej. Alex Gamer">
+              <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 5px;">Tu Nombre de Héroe / Alias</label>
+              <input type="text" id="username-input" class="form-input" placeholder="Ej. Alex Gamer" value="">
             </div>
             <div>
-              <input type="hidden" id="student-code" class="form-input" value="XP-2026-TIC">
+              <input type="hidden" id="student-code" class="form-input" value="XP-0000-2026">
             </div>
           </div>
 
           <div class="quiz-step" id="step-2">
             <div class="question-title">2. Contextura y Tono de Piel</div>
-            <label style="font-size: 0.78rem; color: var(--text-muted);">Tipo de Cuerpo</label>
+            <label style="font-size: 0.8rem; color: var(--text-muted);">Tipo de Cuerpo</label>
             <div class="options-grid">
               <button class="option-btn selected" onclick="setTrait('bodyType', 'athletic', this)">Atlético</button>
               <button class="option-btn" onclick="setTrait('bodyType', 'slim', this)">Delgado</button>
               <button class="option-btn" onclick="setTrait('bodyType', 'robust', this)">Robusto</button>
             </div>
-            <label style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">Tono de Piel Realista</label>
+            <label style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Tono de Piel Realista</label>
             <div class="options-grid">
               <button class="option-btn selected" onclick="setTrait('skinTone', '#f3c19d', this)">Claro</button>
               <button class="option-btn" onclick="setTrait('skinTone', '#e0a370', this)">Trigueño</button>
@@ -362,63 +752,74 @@
           </div>
 
           <div class="quiz-step" id="step-3">
-            <div class="question-title">3. Cortes de Cabello Modernos</div>
-            <label style="font-size: 0.78rem; color: var(--text-muted);">Estilo de Barbería</label>
+            <div class="question-title">3. Cortes de Cabello Modernos & Realistas</div>
+            <label style="font-size: 0.8rem; color: var(--text-muted);">Estilo de Barbería / Estilista</label>
             <div class="options-grid">
-              <button class="option-btn selected" onclick="setTrait('hairStyle', 'lowFade', this)">Low Fade</button>
-              <button class="option-btn" onclick="setTrait('hairStyle', 'frenchCrop', this)">French Crop</button>
-              <button class="option-btn" onclick="setTrait('hairStyle', 'pompadour', this)">Pompadour</button>
-              <button class="option-btn" onclick="setTrait('hairStyle', 'mulletModern', this)">Mullet Fade</button>
-              <button class="option-btn" onclick="setTrait('hairStyle', 'buzzCut', this)">Buzz Cut</button>
-              <button class="option-btn" onclick="setTrait('hairStyle', 'afroFade', this)">Afro Taper</button>
+              <button class="option-btn selected" onclick="setTrait('hairStyle', 'lowFade', this)">Low Fade + Texture</button>
+              <button class="option-btn" onclick="setTrait('hairStyle', 'frenchCrop', this)">French Crop / Fringe</button>
+              <button class="option-btn" onclick="setTrait('hairStyle', 'pompadour', this)">Pompadour / Quiff</button>
+              <button class="option-btn" onclick="setTrait('hairStyle', 'mulletModern', this)">Modern Mullet Fade</button>
+              <button class="option-btn" onclick="setTrait('hairStyle', 'buzzCut', this)">Buzz Cut + Lineup</button>
+              <button class="option-btn" onclick="setTrait('hairStyle', 'afroFade', this)">Afro Taper Fade</button>
+              <button class="option-btn" onclick="setTrait('hairStyle', 'manBunFade', this)">Man Bun + Undercut</button>
+              <button class="option-btn" onclick="setTrait('hairStyle', 'curtainWaves', this)">Middle Part / Waves</button>
             </div>
-            <label style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">Color de Cabello</label>
+            <label style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Color del Cabello</label>
             <div class="options-grid">
-              <button class="option-btn selected" onclick="setTrait('hairColor', '#1a110b', this)">Negro</button>
-              <button class="option-btn" onclick="setTrait('hairColor', '#3d2314', this)">Castaño</button>
-              <button class="option-btn" onclick="setTrait('hairColor', '#b89778', this)">Rubio</button>
-              <button class="option-btn" onclick="setTrait('hairColor', '#a8a29e', this)">Silver</button>
+              <button class="option-btn selected" onclick="setTrait('hairColor', '#1a110b', this)">Negro Azabache</button>
+              <button class="option-btn" onclick="setTrait('hairColor', '#3d2314', this)">Castaño Oscuro</button>
+              <button class="option-btn" onclick="setTrait('hairColor', '#b89778', this)">Rubio Dorado</button>
+              <button class="option-btn" onclick="setTrait('hairColor', '#a8a29e', this)">Platinado / Silver</button>
             </div>
           </div>
 
           <div class="quiz-step" id="step-4">
-            <div class="question-title">4. Perfilado y Gafas</div>
-            <label style="font-size: 0.78rem; color: var(--text-muted);">Barba</label>
+            <div class="question-title">4. Perfilado Facial y Accesorios</div>
+            <label style="font-size: 0.8rem; color: var(--text-muted);">Vello Facial y Perfilado</label>
             <div class="options-grid">
-              <button class="option-btn selected" onclick="setTrait('beardStyle', 'none', this)">Afeitado</button>
-              <button class="option-btn" onclick="setTrait('beardStyle', 'fadeBeard', this)">Taper Fade</button>
-              <button class="option-btn" onclick="setTrait('beardStyle', 'goateed', this)">Perilla</button>
-              <button class="option-btn" onclick="setTrait('beardStyle', 'stubbleLine', this)">Sombra</button>
+              <button class="option-btn selected" onclick="setTrait('beardStyle', 'none', this)">Limpio / Afeitado</button>
+              <button class="option-btn" onclick="setTrait('beardStyle', 'fadeBeard', this)">Barba Taper Fade</button>
+              <button class="option-btn" onclick="setTrait('beardStyle', 'goateed', this)">Candado / Perilla</button>
+              <button class="option-btn" onclick="setTrait('beardStyle', 'stubbleLine', this)">Sombra 3 Días</button>
             </div>
-            <label style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">Gafas</label>
+            <label style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Gafas</label>
             <div class="options-grid">
               <button class="option-btn selected" onclick="setTrait('glassesStyle', 'none', this)">Sin Gafas</button>
-              <button class="option-btn" onclick="setTrait('glassesStyle', 'square', this)">Cuadradas</button>
-              <button class="option-btn" onclick="setTrait('glassesStyle', 'round', this)">Redondas</button>
+              <button class="option-btn" onclick="setTrait('glassesStyle', 'square', this)">Cuadradas Urban</button>
+              <button class="option-btn" onclick="setTrait('glassesStyle', 'round', this)">Redondas Retro</button>
             </div>
           </div>
 
           <div class="quiz-step" id="step-5">
-            <div class="question-title">5. Vestimenta y Colores</div>
-            <label style="font-size: 0.78rem; color: var(--text-muted);">Estilo de Outfit</label>
+            <div class="question-title">5. Vestimenta y Paleta de Colores (Rueda de Color)</div>
+            <label style="font-size: 0.8rem; color: var(--text-muted);">Estilo de Outfit</label>
             <div class="options-grid">
-              <button class="option-btn selected" onclick="setTrait('clothingStyle', 'hoodie', this)">Hoodie</button>
-              <button class="option-btn" onclick="setTrait('clothingStyle', 'tshirt', this)">Camiseta</button>
-              <button class="option-btn" onclick="setTrait('clothingStyle', 'suit', this)">Blazer</button>
+              <button class="option-btn selected" onclick="setTrait('clothingStyle', 'hoodie', this)">Chaqueta / Hoodie</button>
+              <button class="option-btn" onclick="setTrait('clothingStyle', 'tshirt', this)">Camiseta Gamer</button>
+              <button class="option-btn" onclick="setTrait('clothingStyle', 'suit', this)">Blazer / Elegante</button>
             </div>
 
-            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 6px;">
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 8px;">
               <div class="color-picker-group">
-                <div class="color-picker-label"><i class="fa-solid fa-shirt" style="color: var(--gold-primary);"></i> Torso</div>
-                <input type="color" class="color-wheel-input" value="#0f172a" oninput="updateColorTrait('clothingColor', this.value)">
+                <div class="color-picker-label">
+                  <i class="fa-solid fa-shirt" style="color: var(--gold-primary);"></i>
+                  <span>Color Prenda Superior (Torso)</span>
+                </div>
+                <input type="color" class="color-wheel-input" id="clothing-color-wheel" value="#0f172a" oninput="updateColorTrait('clothingColor', this.value)">
               </div>
               <div class="color-picker-group">
-                <div class="color-picker-label"><i class="fa-solid fa-user-large" style="color: var(--accent-cyan);"></i> Pantalón</div>
-                <input type="color" class="color-wheel-input" value="#1e293b" oninput="updateColorTrait('pantsColor', this.value)">
+                <div class="color-picker-label">
+                  <i class="fa-solid fa-user-large" style="color: var(--accent-cyan);"></i>
+                  <span>Color Pantalones / Jeans</span>
+                </div>
+                <input type="color" class="color-wheel-input" id="pants-color-wheel" value="#1e293b" oninput="updateColorTrait('pantsColor', this.value)">
               </div>
               <div class="color-picker-group">
-                <div class="color-picker-label"><i class="fa-solid fa-shoe-prints" style="color: var(--gold-light);"></i> Calzado</div>
-                <input type="color" class="color-wheel-input" value="#f59e0b" oninput="updateColorTrait('shoesColor', this.value)">
+                <div class="color-picker-label">
+                  <i class="fa-solid fa-shoe-prints" style="color: var(--gold-light);"></i>
+                  <span>Color Calzado / Sneakers</span>
+                </div>
+                <input type="color" class="color-wheel-input" id="shoes-color-wheel" value="#f59e0b" oninput="updateColorTrait('shoesColor', this.value)">
               </div>
             </div>
           </div>
@@ -432,7 +833,7 @@
     </div>
   </div>
 
-  <!-- MAIN APP CONTAINER -->
+  <!-- MAIN APPLICATION CONTAINER -->
   <div id="app-container">
     <aside class="sidebar">
       <div>
@@ -440,28 +841,28 @@
           <div class="brand-icon"><i class="fa-solid fa-gamepad"></i></div>
           <div>
             <div class="brand-title">LIFE XP</div>
-            <div class="brand-sub">life-xp-tic.com</div>
+            <div class="brand-sub">Tu Vida Como Videojuego</div>
           </div>
         </div>
 
         <ul class="nav-menu">
-          <li class="nav-item active" onclick="switchTab('map')">
+          <li class="nav-item active" onclick="switchTab('map', event)">
             <i class="fa-solid fa-map-location-dot"></i>
-            <span>Mapa Chapinero</span>
+            <span>Mapa Chapinero - Konrad Lorenz</span>
           </li>
-          <li class="nav-item" onclick="switchTab('quests')">
+          <li class="nav-item" onclick="switchTab('quests', event)">
             <i class="fa-solid fa-scroll"></i>
             <span>Catálogo de Retos</span>
           </li>
-          <li class="nav-item" onclick="switchTab('stores')">
+          <li class="nav-item" onclick="switchTab('stores', event)">
             <i class="fa-solid fa-store"></i>
             <span>Tiendas Aliadas</span>
           </li>
-          <li class="nav-item" onclick="switchTab('rewards')">
+          <li class="nav-item" onclick="switchTab('rewards', event)">
             <i class="fa-solid fa-gift"></i>
             <span>Tienda de Premios</span>
           </li>
-          <li class="nav-item" onclick="switchTab('profile')">
+          <li class="nav-item" onclick="switchTab('profile', event)">
             <i class="fa-solid fa-user-shield"></i>
             <span>Perfil y Privacidad</span>
           </li>
@@ -471,33 +872,10 @@
       <div class="sidebar-footer">
         <div class="university-badge">
           <span>Fundación Universitaria <strong>Konrad Lorenz</strong></span>
-          <span>Gestión TIC | 2026</span>
+          <span>Gestión de Soluciones TIC | 2026</span>
         </div>
       </div>
     </aside>
-
-    <nav class="mobile-nav-bar">
-      <div class="mobile-nav-item active" onclick="switchTab('map')">
-        <i class="fa-solid fa-map-location-dot"></i>
-        <span>Mapa</span>
-      </div>
-      <div class="mobile-nav-item" onclick="switchTab('quests')">
-        <i class="fa-solid fa-scroll"></i>
-        <span>Retos</span>
-      </div>
-      <div class="mobile-nav-item" onclick="switchTab('stores')">
-        <i class="fa-solid fa-store"></i>
-        <span>Tiendas</span>
-      </div>
-      <div class="mobile-nav-item" onclick="switchTab('rewards')">
-        <i class="fa-solid fa-gift"></i>
-        <span>Premios</span>
-      </div>
-      <div class="mobile-nav-item" onclick="switchTab('profile')">
-        <i class="fa-solid fa-user-shield"></i>
-        <span>Perfil</span>
-      </div>
-    </nav>
 
     <main class="main-wrapper">
       <header class="top-hud">
@@ -505,7 +883,7 @@
           <div class="user-profile-summary">
             <div class="avatar-container">
               <div class="avatar-img-hud">
-                <canvas id="hud-avatar-canvas" width="42" height="42"></canvas>
+                <canvas id="hud-avatar-canvas" width="48" height="48"></canvas>
               </div>
               <div class="lvl-badge" id="hud-lvl">LVL 0</div>
             </div>
@@ -540,9 +918,9 @@
         <div class="hud-controls">
           <div class="weather-widget">
             <i class="fa-solid fa-cloud-sun"></i>
-            <span>Bogotá 18°C</span>
+            <span>Bogotá 18°C | Retos Activos</span>
           </div>
-          <button class="btn-audio-toggle" onclick="toggleAudio()" title="Sonido">
+          <button class="btn-audio-toggle" id="audio-btn" onclick="toggleAudio()" title="Activar/Desactivar Efectos de Sonido">
             <i class="fa-solid fa-volume-high"></i>
           </button>
         </div>
@@ -554,77 +932,28 @@
           <div class="map-overlay-controls">
             <div class="map-card-panel">
               <div class="map-card-title">
-                <span>Filtro de Puntos</span>
+                <span>Filtro de Puntos Chapinero</span>
                 <i class="fa-solid fa-filter"></i>
               </div>
               <div class="filter-btn-group">
-                <button class="filter-chip active" onclick="filterMap('all')">Todos</button>
-                <button class="filter-chip" onclick="filterMap('parque')">Parques</button>
-                <button class="filter-chip" onclick="filterMap('comercio')">Comercios</button>
-                <button class="filter-chip" onclick="filterMap('universidad')">Universidades</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="view-quests" class="tab-view">
-          <div class="view-header">
-            <div class="view-title">
-              <i class="fa-solid fa-scroll"></i>
-              <span>Catálogo de Retos y Misiones</span>
-            </div>
-          </div>
-          <div class="quests-grid" id="quests-container"></div>
-        </div>
-
-        <div id="view-stores" class="tab-view">
-          <div class="view-header">
-            <div class="view-title">
-              <i class="fa-solid fa-store"></i>
-              <span>Tiendas Aliadas en Bogotá</span>
-            </div>
-          </div>
-          <div class="quests-grid" id="stores-container"></div>
-        </div>
-
-        <div id="view-rewards" class="tab-view">
-          <div class="view-header">
-            <div class="view-title">
-              <i class="fa-solid fa-gift"></i>
-              <span>Tienda de Premios</span>
-            </div>
-          </div>
-          <div class="rewards-grid" id="rewards-container"></div>
-        </div>
-
-        <div id="view-profile" class="tab-view">
-          <div class="view-header">
-            <div class="view-title">
-              <i class="fa-solid fa-user-shield"></i>
-              <span>Perfil y Privacidad (Ley 1581)</span>
-            </div>
-          </div>
-          <div class="profile-dashboard">
-            <div class="profile-card">
-              <div class="profile-avatar-display">
-                <canvas id="profile-avatar-canvas" width="170" height="300"></canvas>
-              </div>
-              <h2 style="font-size: 1.1rem;" id="profile-username">Explorador</h2>
-              <p style="color: var(--gold-primary); font-size: 0.8rem; margin-bottom: 12px;">Explorador Urbano XP</p>
-              <div style="text-align: left; font-size: 0.8rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 6px;">
-                <div><strong>ID de Acceso:</strong> <span id="profile-code">XP-2026-TIC</span></div>
-                <div><strong>Misiones Completadas:</strong> <span id="completed-count">0</span></div>
-                <div><strong>Nivel:</strong> <span id="profile-lvl-text">LVL 0</span></div>
+                <button class="filter-chip active" onclick="filterMap('all', event)">Todos</button>
+                <button class="filter-chip" onclick="filterMap('parque', event)">Parques</button>
+                <button class="filter-chip" onclick="filterMap('comercio', event)">Comercios</button>
+                <button class="filter-chip" onclick="filterMap('universidad', event)">Universidades</button>
+                <button class="filter-chip" onclick="filterMap('gym', event)">Gimnasios</button>
               </div>
             </div>
 
-            <div class="legal-panel">
-              <h3 style="color: var(--gold-light); font-family: 'Orbitron'; margin-bottom: 8px;">Protección de Datos Personales</h3>
-              <p style="color: var(--text-muted); margin-bottom: 10px;">
-                LIFE XP opera bajo la normatividad colombiana de protección de datos. Tu ubicación GPS y fotos de evidencia solo se utilizan para la validación interna de tus misiones gamificadas.
+            <div class="map-card-panel">
+              <div class="map-card-title">
+                <span>Ubicación Privada</span>
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px;">
+                Ley 1581 de 2012: Tu GPS está activo solo para validar misiones cercanas.
               </p>
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
-                <span style="font-weight: 600;">Geolocalización Activa</span>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.8rem; font-weight: 600;">Geolocalización</span>
                 <label class="toggle-switch">
                   <input type="checkbox" checked id="gps-toggle" onchange="toggleGPS()">
                   <span class="slider"></span>
@@ -634,49 +963,119 @@
           </div>
         </div>
 
+        <div id="view-quests" class="tab-view">
+          <div class="view-header">
+            <div class="view-title">
+              <i class="fa-solid fa-scroll"></i>
+              <span>Catálogo Extendido de Retos y Misiones (Más de 10 Retos)</span>
+            </div>
+          </div>
+          <div class="quests-grid" id="quests-container"></div>
+        </div>
+
+        <div id="view-stores" class="tab-view">
+          <div class="view-header">
+            <div class="view-title">
+              <i class="fa-solid fa-store"></i>
+              <span>Tiendas Aliadas y Puntos del Mapa (Validación con Cámara)</span>
+            </div>
+          </div>
+          <div class="quests-grid" id="stores-container"></div>
+        </div>
+
+        <div id="view-rewards" class="tab-view">
+          <div class="view-header">
+            <div class="view-title">
+              <i class="fa-solid fa-gift"></i>
+              <span>Tienda de Premios (Canjea en Tiendas Aliadas)</span>
+            </div>
+          </div>
+          <div class="rewards-grid" id="rewards-container"></div>
+        </div>
+
+        <div id="view-profile" class="tab-view">
+          <div class="view-header">
+            <div class="view-title">
+              <i class="fa-solid fa-user-shield"></i>
+              <span>Perfil de Usuario y Privacidad de Datos</span>
+            </div>
+          </div>
+          <div class="profile-dashboard">
+            <div class="profile-card">
+              <div class="profile-avatar-display">
+                <canvas id="profile-avatar-canvas" width="200" height="350"></canvas>
+              </div>
+              <h2 style="font-size: 1.2rem;" id="profile-username">Explorador</h2>
+              <p style="color: var(--gold-primary); font-size: 0.85rem; margin-bottom: 15px;">Explorador Urbano XP</p>
+              <div style="text-align: left; font-size: 0.85rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 8px;">
+                <div><strong>ID de Acceso:</strong> <span id="profile-code">XP-0000</span></div>
+                <div><strong>Misiones Completadas:</strong> <span id="completed-count">0</span></div>
+                <div><strong>Nivel de Explorador:</strong> <span id="profile-lvl-text">LVL 0</span></div>
+              </div>
+            </div>
+
+            <div class="legal-panel">
+              <h3 style="color: var(--gold-light); font-family: 'Orbitron'; margin-bottom: 10px;">Cumplimiento Ley 1581 de 2012 y Decreto 1377 de 2013</h3>
+              <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 15px;">
+                La plataforma LIFE XP garantiza la protección absoluta de tus datos personales y de geolocalización. El mapa interactivo opera bajo el principio de transparencia y control voluntario:
+              </p>
+              <ul style="padding-left: 20px; color: var(--text-muted); font-size: 0.85rem; display: flex; flex-direction: column; gap: 8px;">
+                <li>Tu ubicación en tiempo real solo se consulta al momento de validar una misión.</li>
+                <li>Puedes encender o apagar la geolocalización en cualquier momento desde el HUD o panel de ajustes.</li>
+                <li>No compartimos historial de desplazamientos con terceros sin autorización explícita.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
       </div>
     </main>
+
   </div>
 
   <!-- MODAL DE CÁMARA EN VIVO -->
   <div class="modal-overlay" id="upload-evidence-modal">
     <div class="modal-card">
       <div class="modal-icon"><i class="fa-solid fa-camera"></i></div>
-      <h2 style="font-family: 'Orbitron'; font-size: 1.1rem; color: var(--gold-light);" id="evidence-quest-title">Evidencia en Vivo</h2>
-      <p style="color: var(--text-muted); font-size: 0.78rem;">Toma una foto para comprobar tu misión o visita en la ciudad.</p>
+      <h2 style="font-family: 'Orbitron'; font-size: 1.2rem; color: var(--gold-light);" id="evidence-quest-title">Cámara en Vivo - Evidencia</h2>
+      <p style="color: var(--text-muted); font-size: 0.82rem;">Debes tomar una foto en vivo con tu cámara para comprobar la misión o visita.</p>
       
       <div class="camera-box-area">
         <video id="webcam-video" autoplay playsinline></video>
         <canvas id="photo-canvas"></canvas>
         <div class="camera-placeholder-text" id="camera-placeholder">
-          <i class="fa-solid fa-video-slash" style="font-size: 1.8rem; color: var(--gold-primary);"></i>
-          <span>Iniciando cámara...</span>
+          <i class="fa-solid fa-video-slash" style="font-size: 2rem; color: var(--gold-primary);"></i>
+          <span>Iniciando cámara web...</span>
         </div>
       </div>
 
-      <div style="display: flex; gap: 8px; margin-top: 4px;">
+      <div style="display: flex; gap: 10px; margin-top: 5px;">
         <button class="btn-secondary" style="flex: 1;" onclick="closeEvidenceModal()">Cancelar</button>
-        <button class="btn-action" style="flex: 1;" id="btn-capture-photo" onclick="capturePhotoFromCamera()">Tomar Foto</button>
-        <button class="btn-action" style="flex: 1; display: none;" id="btn-submit-evidence" onclick="submitQuestWithEvidence()">Confirmar</button>
+        <button class="btn-action" style="flex: 1;" id="btn-capture-photo" onclick="capturePhotoFromCamera()">
+          <i class="fa-solid fa-camera-retro"></i> Tomar Foto
+        </button>
+        <button class="btn-action" style="flex: 1; display: none;" id="btn-submit-evidence" onclick="submitQuestWithEvidence()">
+          <i class="fa-solid fa-check"></i> Confirmar
+        </button>
       </div>
     </div>
   </div>
 
-  <!-- REWARD MODAL -->
+  <!-- REWARD MODAL CELEBRACIÓN / TARJETA DE PREMIO -->
   <div class="modal-overlay" id="reward-modal">
     <div class="modal-card">
       <div class="modal-icon"><i class="fa-solid fa-trophy"></i></div>
-      <h2 style="font-family: 'Orbitron'; color: var(--gold-light); font-size: 1.2rem;" id="modal-title">¡Misión Completada!</h2>
-      <p style="color: var(--text-muted); font-size: 0.82rem;" id="modal-desc">Has ganado XP y Monedas.</p>
+      <h2 style="font-family: 'Orbitron'; color: var(--gold-light); margin-bottom: 2px;" id="modal-title">¡Misión Completada!</h2>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 5px;" id="modal-desc">Has ganado XP y Monedas.</p>
       
-      <div id="modal-body-content" style="display: flex; flex-direction: column; gap: 8px;">
-        <div style="margin: 4px 0;" id="evidence-container-box">
-          <span style="font-size: 0.7rem; color: var(--accent-green); font-weight: bold; display: block; margin-bottom: 4px;">Evidencia Validada:</span>
-          <img id="reward-evidence-preview" src="" style="max-height: 110px; border-radius: 8px; border: 2px solid var(--accent-green); object-fit: cover;" alt="Evidencia">
+      <div id="modal-body-content" style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="margin: 5px 0;" id="evidence-container-box">
+          <span style="font-size: 0.75rem; color: var(--accent-green); display: block; margin-bottom: 5px; font-weight: bold;">Foto de Evidencia Capturada:</span>
+          <img id="reward-evidence-preview" src="" style="max-height: 130px; border-radius: 10px; border: 2px solid var(--accent-green); object-fit: cover;" alt="Evidencia validada">
         </div>
       </div>
 
-      <button class="btn-action" onclick="closeRewardModal()" style="margin-top: 4px;">Continuar</button>
+      <button class="btn-action" onclick="closeRewardModal()" style="margin-top: 5px;">Continuar Aventuras</button>
     </div>
   </div>
 
@@ -686,13 +1085,27 @@
   <script>
     let gameState = {
       username: 'Explorador',
-      code: 'XP-2026-TIC',
-      xp: 0, maxXp: 500, lvl: 0, coins: 1000, streak: 1,
-      completedQuestsCount: 0, audioEnabled: true, gpsActive: true,
+      code: 'XP-0000',
+      xp: 0, 
+      maxXp: 500, 
+      lvl: 0, 
+      coins: 1000, 
+      streak: 1,
+      completedQuestsCount: 0,
+      audioEnabled: true, 
+      gpsActive: true,
       avatarParams: {
-        bodyType: 'athletic', skinTone: '#f3c19d', hairColor: '#1a110b', eyeColor: '#2b1704',
-        hairStyle: 'lowFade', beardStyle: 'none', glassesStyle: 'none',
-        clothingStyle: 'hoodie', clothingColor: '#0f172a', pantsColor: '#1e293b', shoesColor: '#f59e0b'
+        bodyType: 'athletic',
+        skinTone: '#f3c19d',
+        hairColor: '#1a110b',
+        eyeColor: '#2b1704',
+        hairStyle: 'lowFade',
+        beardStyle: 'none',
+        glassesStyle: 'none',
+        clothingStyle: 'hoodie',
+        clothingColor: '#0f172a',
+        pantsColor: '#1e293b',
+        shoesColor: '#f59e0b'
       }
     };
 
@@ -703,22 +1116,29 @@
     let mediaStream = null;
 
     const unifiedLocations = [
-      { id: 1, title: 'Fundación Universitaria Konrad Lorenz', type: 'universidad', tag: 'Universidad', x: 500, y: 320, desc: 'Institución central de ingeniería y desarrollo tecnológico.', xp: 300, coins: 100, completed: false, photoEvidence: null, isStore: true, rewardTitle: 'Kit Software & Café Konrad', rewardCost: 350, rewardIcon: 'fa-bolt' },
-      { id: 2, title: 'Movistar Arena - El Campín', type: 'parque', tag: 'Entretenimiento', x: 260, y: 300, desc: 'Escenario multipropósito de conciertos y eventos.', xp: 250, coins: 80, completed: false, photoEvidence: null, isStore: false },
-      { id: 3, title: 'Parque de los Novios', type: 'parque', tag: 'Parque Metropolitano', x: 220, y: 120, desc: 'Zona verde norte para deporte y recreación.', xp: 200, coins: 60, completed: false, photoEvidence: null, isStore: false },
-      { id: 4, title: 'Parque de los Hippies', type: 'parque', tag: 'Chapinero', x: 450, y: 410, desc: 'Punto de encuentro cultural y estudiantil.', xp: 180, coins: 50, completed: false, photoEvidence: null, isStore: false },
-      { id: 5, title: 'Centro Comercial Galerías', type: 'comercio', tag: 'Tienda Aliada', x: 240, y: 530, desc: 'Centro comercial tradicional con tiendas y moda.', xp: 190, coins: 70, completed: false, photoEvidence: null, isStore: true, rewardTitle: 'Cupón de Ropa 30%', rewardCost: 400, rewardIcon: 'fa-shirt' },
-      { id: 6, title: 'Quebrada La Vieja', type: 'gym', tag: 'Tienda Aliada / Eco', x: 680, y: 250, desc: 'Reserva ecológica para trekking y salud física.', xp: 240, coins: 85, completed: false, photoEvidence: null, isStore: true, rewardTitle: 'Kit Senderismo & Hidratación', rewardCost: 300, rewardIcon: 'fa-dumbbell' },
-      { id: 7, title: 'Zona G - Chapinero Alto', type: 'comercio', tag: 'Tienda Aliada', x: 620, y: 80, desc: 'Distrito gastronómico exclusivo de alta cocina.', xp: 280, coins: 95, completed: false, photoEvidence: null, isStore: true, rewardTitle: 'Bono Gourmet $20.000', rewardCost: 500, rewardIcon: 'fa-utensils' }
+      { id: 1, title: 'Fundación Universitaria Konrad Lorenz', type: 'universidad', tag: 'Universidad / Aliada', x: 500, y: 320, desc: 'Institución central de ingeniería, software y desarrollo tecnológico.', xp: 300, coins: 100, completed: false, photoEvidence: null, isStore: true, rewardTitle: 'Kit Software & Café Konrad', rewardCost: 350, rewardIcon: 'fa-bolt' },
+      { id: 2, title: 'Movistar Arena - El Campín', type: 'parque', tag: 'Entretenimiento', x: 260, y: 300, desc: 'Gran escenario multipropósito de conciertos y eventos masivos.', xp: 250, coins: 80, completed: false, photoEvidence: null, isStore: false },
+      { id: 3, title: 'Parque de los Novios', type: 'parque', tag: 'Parque Metropolitano', x: 220, y: 120, desc: 'Zona verde norte para descanso, deporte y recreación al aire libre.', xp: 200, coins: 60, completed: false, photoEvidence: null, isStore: false },
+      { id: 4, title: 'Parque de los Hippies', type: 'parque', tag: 'Parque Chapinero', x: 450, y: 410, desc: 'Punto de encuentro urbano, cultural y estudiantil en Chapinero.', xp: 180, coins: 50, completed: false, photoEvidence: null, isStore: false },
+      { id: 5, title: 'Universidad de La Salle - Sede Chapinero', type: 'universidad', tag: 'Universidad', x: 550, y: 440, desc: 'Campus universitario de formación superior en la localidad.', xp: 220, coins: 70, completed: false, photoEvidence: null, isStore: false },
+      { id: 6, title: 'Centro Comercial Galerías', type: 'comercio', tag: 'Tienda Aliada', x: 240, y: 530, desc: 'Centro comercial tradicional con tiendas, moda y gastronomía.', xp: 190, coins: 70, completed: false, photoEvidence: null, isStore: true, rewardTitle: 'Cupón de Ropa 30% en Galerías', rewardCost: 400, rewardIcon: 'fa-shirt' },
+      { id: 7, title: 'Royal Center', type: 'comercio', tag: 'Tienda Aliada', x: 440, y: 160, desc: 'Emblemático centro de eventos y conciertos de la zona rosa.', xp: 210, coins: 75, completed: false, photoEvidence: null, isStore: true, rewardTitle: 'Pase VIP Concierto Digital', rewardCost: 450, rewardIcon: 'fa-music' },
+      { id: 8, title: 'Quebrada La Vieja', type: 'gym', tag: 'Tienda Aliada / Eco', x: 680, y: 250, desc: 'Reserva ecológica y sendero de montaña para trekking y salud física.', xp: 240, coins: 85, completed: false, photoEvidence: null, isStore: true, rewardTitle: 'Kit Senderismo & Hidratación', rewardCost: 300, rewardIcon: 'fa-dumbbell' },
+      { id: 9, title: 'Hospital Militar Central de Bogotá', type: 'comercio', tag: 'Salud', x: 510, y: 800, desc: 'Complejo médico y hospitalario de alta complejidad.', xp: 160, coins: 55, completed: false, photoEvidence: null, isStore: false },
+      { id: 10, title: 'Zona G - Chapinero Alto', type: 'comercio', tag: 'Tienda Aliada', x: 620, y: 80, desc: 'Distrito gastronómico exclusivo de alta cocina en Bogotá.', xp: 280, coins: 95, completed: false, photoEvidence: null, isStore: true, rewardTitle: 'Bono Gourmet Zona G $20.000', rewardCost: 500, rewardIcon: 'fa-utensils' }
     ];
 
     let questsData = [
-      { id: 101, title: 'Expedición Konrad Lorenz', desc: 'Visita el campus y sube tu foto en vivo.', type: 'solo', tag: 'Academia', xp: 150, coins: 50, completed: false, photoEvidence: null },
-      { id: 102, title: 'Reto Deportivo El Campín', desc: 'Acude al sector y registra tu actividad.', type: 'group', tag: 'Deporte', xp: 200, coins: 80, completed: false, photoEvidence: null },
-      { id: 103, title: 'Caminata Parque de los Novios', desc: 'Recorre los senderos verdes.', type: 'rainy', tag: 'Parque', xp: 180, coins: 60, completed: false, photoEvidence: null },
-      { id: 104, title: 'Encuentro Parque de los Hippies', desc: 'Visita el icónico parque en Chapinero.', type: 'solo', tag: 'Urbano', xp: 130, coins: 40, completed: false, photoEvidence: null },
-      { id: 105, title: 'Exploración C.C. Galerías', desc: 'Visita el centro comercial y captura tu paso.', type: 'comercio', tag: 'Comercio', xp: 160, coins: 55, completed: false, photoEvidence: null },
-      { id: 106, title: 'Trekking Quebrada La Vieja', desc: 'Sube por los cerros orientales y registra aire puro.', type: 'solo', tag: 'Fitness', xp: 300, coins: 100, completed: false, photoEvidence: null }
+      { id: 101, title: 'Expedición en Fundación Universitaria Konrad Lorenz', desc: 'Visita el campus principal de la Konrad Lorenz y sube tu foto en vivo.', type: 'solo', tag: 'Academia', xp: 150, coins: 50, completed: false, photoEvidence: null },
+      { id: 102, title: 'Reto Deportivo en Movistar Arena / El Campín', desc: 'Acude al sector del Campín y registra tu actividad física o visita.', type: 'group', tag: 'Deporte', xp: 200, coins: 80, completed: false, photoEvidence: null },
+      { id: 103, title: 'Caminata Verde en Parque de los Novios', desc: 'Recorre los senderos del Parque de los Novios y captura la naturaleza.', type: 'rainy', tag: 'Parque', xp: 180, coins: 60, completed: false, photoEvidence: null },
+      { id: 104, title: 'Encuentro Urbano en Parque de los Hippies', desc: 'Visita el icónico Parque de los Hippies en Chapinero y sube tu evidencia.', type: 'solo', tag: 'Urbano', xp: 130, coins: 40, completed: false, photoEvidence: null },
+      { id: 105, title: 'Ruta Académica Universidad de La Salle', desc: 'Acércate al campus de La Salle Chapinero y documenta tu recorrido.', type: 'solo', tag: 'Campus', xp: 210, coins: 70, completed: false, photoEvidence: null },
+      { id: 106, title: 'Exploración Comercial en C.C. Galerías', desc: 'Visita el centro comercial y captura tu paso por los locales.', type: 'comercio', tag: 'Comercio', xp: 160, coins: 55, completed: false, photoEvidence: null },
+      { id: 107, title: 'Expedición Nocturna en Royal Center', desc: 'Recorre la zona de Chapinero norte y fotografía el entorno cultural.', type: 'group', tag: 'Cultura', xp: 250, coins: 90, completed: false, photoEvidence: null },
+      { id: 108, title: 'Trekking en Quebrada La Vieja', desc: 'Sube por los cerros orientales y registra tu sesión de aire puro.', type: 'solo', tag: 'Fitness', xp: 300, coins: 100, completed: false, photoEvidence: null },
+      { id: 109, title: 'Reto de Hidratación en Marly', desc: 'Toma una foto consumiendo agua o bebidas saludables por la Av. Caracas.', type: 'solo', tag: 'Salud', xp: 110, coins: 35, completed: false, photoEvidence: null },
+      { id: 110, title: 'Ruta Gastronómica Zona G', desc: 'Visita el corredor de la Zona G en Chapinero y sube tu comprobante.', type: 'solo', tag: 'Gourmet', xp: 280, coins: 95, completed: false, photoEvidence: null }
     ];
 
     function renderAIAvatar(canvasId, params) {
@@ -729,27 +1149,191 @@
       const h = canvas.height;
 
       ctx.clearRect(0, 0, w, h);
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(0, 0, w, h);
 
       if (w < 80) {
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath(); ctx.arc(w/2, h/2, w/2, 0, Math.PI*2); ctx.fill();
+
         ctx.fillStyle = params.skinTone;
         ctx.beginPath(); ctx.ellipse(w/2, h*0.5, w*0.32, h*0.38, 0, 0, Math.PI*2); ctx.fill();
+
+        drawRealisticHair(ctx, w/2, h*0.35, w*0.34, h*0.32, params);
+        if (params.glassesStyle !== 'none') drawGlasses(ctx, w/2, h*0.48, w*0.26, params);
         return;
       }
 
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, w, h);
+
+      const shadowGrad = ctx.createRadialGradient(w/2, h*0.93, 5, w/2, h*0.93, w*0.38);
+      shadowGrad.addColorStop(0, 'rgba(0, 0, 0, 0.25)');
+      shadowGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = shadowGrad;
+      ctx.beginPath(); ctx.ellipse(w/2, h*0.93, w*0.38, h*0.04, 0, 0, Math.PI*2); ctx.fill();
+
+      let bw = (params.bodyType === 'robust') ? 1.18 : ((params.bodyType === 'slim') ? 0.85 : 1.0);
+
+      ctx.fillStyle = params.shoesColor;
+      ctx.beginPath();
+      ctx.rect(w*0.35 - w*0.05*bw, h*0.88, w*0.14*bw, h*0.045);
+      ctx.rect(w*0.65 - w*0.09*bw, h*0.88, w*0.14*bw, h*0.045);
+      ctx.fill();
+
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(w*0.35 - w*0.05*bw, h*0.915, w*0.14*bw, h*0.01);
+      ctx.fillRect(w*0.65 - w*0.09*bw, h*0.915, w*0.14*bw, h*0.01);
+
       ctx.fillStyle = params.pantsColor;
-      ctx.fillRect(w*0.34, h*0.58, w*0.13, h*0.31);
-      ctx.fillRect(w*0.53, h*0.58, w*0.13, h*0.31);
+      ctx.fillRect(w*0.34, h*0.58, w*0.13*bw, h*0.31);
+      ctx.fillRect(w*0.53, h*0.58, w*0.13*bw, h*0.31);
+
+      ctx.fillStyle = 'rgba(0,0,0,0.15)';
+      ctx.fillRect(w*0.42, h*0.6, w*0.03, h*0.28);
+      ctx.fillRect(w*0.53, h*0.6, w*0.03, h*0.28);
 
       ctx.fillStyle = params.clothingColor;
-      ctx.beginPath(); ctx.roundRect(w*0.27, h*0.3, w*0.46, h*0.3, [12]); ctx.fill();
+      ctx.beginPath();
+      ctx.rect(w*0.27/bw, h*0.3, w*0.46*bw, h*0.3);
+      ctx.fill();
+
+      if (params.clothingStyle === 'hoodie') {
+        ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(w*0.5, h*0.33); ctx.lineTo(w*0.5, h*0.59); ctx.stroke();
+        ctx.fillStyle = 'rgba(0,0,0,0.1)';
+        ctx.fillRect(w*0.35, h*0.46, w*0.3, h*0.11);
+      } else if (params.clothingStyle === 'suit') {
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath(); ctx.moveTo(w*0.42, h*0.3); ctx.lineTo(w*0.5, h*0.42); ctx.lineTo(w*0.58, h*0.3); ctx.fill();
+        ctx.fillStyle = '#ef4444'; ctx.fillRect(w*0.485, h*0.36, w*0.03, h*0.14);
+      }
+
+      ctx.fillStyle = params.clothingColor;
+      ctx.fillRect(w*0.20/bw, h*0.31, w*0.08*bw, h*0.23);
+      ctx.fillRect(w*0.72*bw, h*0.31, w*0.08*bw, h*0.23);
 
       ctx.fillStyle = params.skinTone;
-      ctx.beginPath(); ctx.ellipse(w/2, h*0.19, w*0.15, h*0.095, 0, 0, Math.PI*2); ctx.fill();
+      ctx.beginPath();
+      ctx.arc(w*0.24/bw, h*0.55, w*0.04, 0, Math.PI*2);
+      ctx.arc(w*0.76*bw, h*0.55, w*0.04, 0, Math.PI*2);
+      ctx.fill();
 
+      ctx.fillStyle = params.skinTone;
+      ctx.fillRect(w*0.44, h*0.24, w*0.12, h*0.07);
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
+      ctx.fillRect(w*0.44, h*0.28, w*0.12, h*0.03);
+
+      ctx.fillStyle = params.skinTone;
+      ctx.beginPath();
+      ctx.ellipse(w/2, h*0.19, w*0.15, h*0.095, 0, 0, Math.PI*2);
+      ctx.fill();
+
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.ellipse(w*0.43, h*0.18, w*0.032, h*0.016, 0, 0, Math.PI*2);
+      ctx.ellipse(w*0.57, h*0.18, w*0.032, h*0.016, 0, 0, Math.PI*2);
+      ctx.fill();
+
+      ctx.fillStyle = params.eyeColor;
+      ctx.beginPath();
+      ctx.arc(w*0.43, h*0.18, w*0.016, 0, Math.PI*2);
+      ctx.arc(w*0.57, h*0.18, w*0.016, 0, Math.PI*2);
+      ctx.fill();
+
+      ctx.strokeStyle = params.hairColor; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.moveTo(w*0.38, h*0.16); ctx.lineTo(w*0.47, h*0.165); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(w*0.53, h*0.165); ctx.lineTo(w*0.62, h*0.16); ctx.stroke();
+
+      ctx.strokeStyle = '#b96b54'; ctx.lineWidth = 1.8;
+      ctx.beginPath(); ctx.arc(w/2, h*0.22, w*0.04, 0.2, Math.PI - 0.2); ctx.stroke();
+
+      if (params.beardStyle !== 'none') {
+        ctx.fillStyle = params.hairColor;
+        if (params.beardStyle === 'fadeBeard') {
+          ctx.globalAlpha = 0.8;
+          ctx.beginPath(); ctx.arc(w/2, h*0.22, w*0.08, 0, Math.PI); ctx.fill();
+          ctx.globalAlpha = 1.0;
+        } else if (params.beardStyle === 'stubbleLine') {
+          ctx.fillStyle = 'rgba(0,0,0,0.2)';
+          ctx.beginPath(); ctx.arc(w/2, h*0.22, w*0.08, 0, Math.PI); ctx.fill();
+        } else if (params.beardStyle === 'goateed') {
+          ctx.fillRect(w*0.46, h*0.22, w*0.08, h*0.025);
+        }
+      }
+
+      if (params.glassesStyle !== 'none') drawGlasses(ctx, w/2, h*0.18, w*0.15, params);
+      drawRealisticHair(ctx, w/2, h*0.14, w*0.16, h*0.08, params);
+    }
+
+    function drawRealisticHair(ctx, cx, cy, hw, hh, params) {
       ctx.fillStyle = params.hairColor;
-      ctx.beginPath(); ctx.ellipse(w/2, h*0.14, w*0.16, h*0.08, 0, Math.PI, Math.PI*2); ctx.fill();
+      const fadeGrad = ctx.createLinearGradient(cx - hw, cy, cx + hw, cy);
+      fadeGrad.addColorStop(0, 'rgba(0,0,0,0.2)');
+      fadeGrad.addColorStop(0.3, params.hairColor);
+      fadeGrad.addColorStop(0.7, params.hairColor);
+      fadeGrad.addColorStop(1, 'rgba(0,0,0,0.2)');
+
+      if (params.hairStyle === 'lowFade') {
+        ctx.fillStyle = fadeGrad;
+        ctx.beginPath(); ctx.ellipse(cx, cy, hw*0.9, hh*0.8, 0, Math.PI, Math.PI*2); ctx.fill();
+        ctx.fillStyle = params.hairColor;
+        ctx.beginPath(); ctx.ellipse(cx, cy - hh*0.3, hw*0.8, hh*0.6, 0, Math.PI, Math.PI*2); ctx.fill();
+      } 
+      else if (params.hairStyle === 'frenchCrop') {
+        ctx.fillStyle = params.hairColor;
+        ctx.fillRect(cx - hw*0.95, cy - hh*0.6, hw*1.9, hh*0.7);
+        ctx.fillStyle = 'rgba(0,0,0,0.3)';
+        ctx.fillRect(cx - hw*0.95, cy, hw*0.2, hh*0.4);
+        ctx.fillRect(cx + hw*0.75, cy, hw*0.2, hh*0.4);
+      } 
+      else if (params.hairStyle === 'pompadour') {
+        ctx.beginPath();
+        ctx.moveTo(cx - hw*0.9, cy + hh*0.2);
+        ctx.quadraticCurveTo(cx - hw*0.8, cy - hh*1.8, cx, cy - hh*2.0);
+        ctx.quadraticCurveTo(cx + hw*0.8, cy - hh*1.8, cx + hw*0.9, cy + hh*0.2);
+        ctx.fill();
+      } 
+      else if (params.hairStyle === 'mulletModern') {
+        ctx.beginPath();
+        ctx.ellipse(cx, cy - hh*0.2, hw*0.95, hh*0.8, 0, Math.PI, Math.PI*2);
+        ctx.fillRect(cx - hw*1.1, cy, hw*0.35, hh*1.8);
+        ctx.fillRect(cx + hw*0.75, cy, hw*0.35, hh*1.8);
+        ctx.fill();
+      } 
+      else if (params.hairStyle === 'buzzCut') {
+        ctx.fillStyle = 'rgba(0,0,0,0.35)';
+        ctx.beginPath(); ctx.ellipse(cx, cy, hw*0.88, hh*0.75, 0, Math.PI, Math.PI*2); ctx.fill();
+      } 
+      else if (params.hairStyle === 'afroFade') {
+        ctx.beginPath(); ctx.arc(cx, cy - hh*0.2, hw*1.1, 0, Math.PI*2); ctx.fill();
+        ctx.fillStyle = 'rgba(255,255,255,0.1)';
+        ctx.beginPath(); ctx.arc(cx - 10, cy - 15, 6, 0, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(cx + 10, cy - 20, 8, 0, Math.PI*2); ctx.fill();
+      } 
+      else if (params.hairStyle === 'manBunFade') {
+        ctx.beginPath(); ctx.ellipse(cx, cy, hw*0.85, hh*0.7, 0, Math.PI, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(cx, cy - hh*1.2, hw*0.45, 0, Math.PI*2); ctx.fill();
+      } 
+      else if (params.hairStyle === 'curtainWaves') {
+        ctx.beginPath();
+        ctx.arc(cx, cy, hw*0.95, Math.PI*0.85, Math.PI*2.15);
+        ctx.fillRect(cx - hw*1.1, cy, hw*0.45, hh*1.6);
+        ctx.fillRect(cx + hw*0.65, cy, hw*0.45, hh*1.6);
+        ctx.fill();
+      }
+    }
+
+    function drawGlasses(ctx, cx, cy, gw, params) {
+      ctx.strokeStyle = '#111111'; ctx.lineWidth = 2.2;
+      if (params.glassesStyle === 'round') {
+        ctx.beginPath();
+        ctx.arc(cx - gw*0.4, cy, gw*0.28, 0, Math.PI*2);
+        ctx.arc(cx + gw*0.4, cy, gw*0.28, 0, Math.PI*2);
+        ctx.stroke();
+      } else {
+        ctx.strokeRect(cx - gw*0.7, cy - gw*0.2, gw*0.5, gw*0.35);
+        ctx.strokeRect(cx + gw*0.2, cy - gw*0.2, gw*0.5, gw*0.35);
+      }
+      ctx.beginPath(); ctx.moveTo(cx - gw*0.2, cy); ctx.lineTo(cx + gw*0.2, cy); ctx.stroke();
     }
 
     function setTrait(key, value, btnEl) {
@@ -768,61 +1352,171 @@
 
     function changeStep(dir) {
       currentStep += dir;
-      if (currentStep > totalSteps) { finishWizard(); return; }
+
+      if (currentStep > totalSteps) {
+        finishWizard();
+        return;
+      }
+
       document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
       document.getElementById(`step-${currentStep}`).classList.add('active');
+
       document.getElementById('btn-prev').style.display = currentStep === 1 ? 'none' : 'block';
-      document.getElementById('btn-next').innerHTML = currentStep === totalSteps ? '¡Finalizar! <i class="fa-solid fa-check"></i>' : 'Siguiente <i class="fa-solid fa-arrow-right"></i>';
+      document.getElementById('btn-next').innerHTML = currentStep === totalSteps ? 
+        '¡Finalizar Avatar! <i class="fa-solid fa-check"></i>' : 
+        'Siguiente <i class="fa-solid fa-arrow-right"></i>';
     }
 
     function finishWizard() {
       const nameInput = document.getElementById('username-input').value.trim();
+      const codeInput = document.getElementById('student-code').value.trim();
+
       if (nameInput) gameState.username = nameInput;
+      if (codeInput) gameState.code = codeInput;
 
       document.getElementById('hud-username').innerText = gameState.username;
       document.getElementById('profile-username').innerText = gameState.username;
+      document.getElementById('profile-code').innerText = gameState.code;
 
       renderAIAvatar('hud-avatar-canvas', gameState.avatarParams);
       renderAIAvatar('profile-avatar-canvas', gameState.avatarParams);
 
       document.getElementById('wizard-overlay').style.display = 'none';
+
       initMap();
       renderQuests();
       renderStores();
       renderRewards();
       updateHUD();
+      playSound('complete');
+    }
+
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function playSound(type) {
+      if (!gameState.audioEnabled) return;
+      if (!audioCtx) audioCtx = new AudioCtx();
+
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      if (type === 'complete') {
+        osc.frequency.setValueAtTime(300, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.3);
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.3);
+      } else if (type === 'coin') {
+        osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.15);
+        gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.15);
+      }
     }
 
     function toggleAudio() {
       gameState.audioEnabled = !gameState.audioEnabled;
+      const btn = document.getElementById('audio-btn');
+      btn.innerHTML = gameState.audioEnabled ? 
+        '<i class="fa-solid fa-volume-high"></i>' : 
+        '<i class="fa-solid fa-volume-xmark"></i>';
     }
 
     let map = null;
     let markers = [];
+    let avatarMarker = null;
 
     function initMap() {
-      if (map) { map.invalidateSize(); return; }
-      map = L.map('map-container', { crs: L.CRS.Simple, minZoom: -1, maxZoom: 3, zoomControl: true });
+      if (map) {
+        map.invalidateSize();
+        return;
+      }
+
+      map = L.map('map-container', {
+        crs: L.CRS.Simple,
+        minZoom: -1,
+        maxZoom: 3,
+        zoomControl: true
+      });
+
       const bounds = [[0,0], [1200,1200]];
       
       const mapCanvas = document.createElement('canvas');
-      mapCanvas.width = 1200; mapCanvas.height = 1200;
+      mapCanvas.width = 1200;
+      mapCanvas.height = 1200;
       const ctx = mapCanvas.getContext('2d');
       
-      ctx.fillStyle = '#1c222d'; ctx.fillRect(0,0,1200,1200);
-      ctx.fillStyle = '#11161f'; ctx.fillRect(800, 0, 400, 1200);
+      ctx.fillStyle = '#1c222d';
+      ctx.fillRect(0,0,1200,1200);
 
-      ctx.strokeStyle = '#2d3748'; ctx.lineWidth = 16;
+      ctx.fillStyle = '#11161f';
+      ctx.fillRect(800, 0, 400, 1200);
+
+      ctx.fillStyle = '#263a29';
+      ctx.fillRect(150, 100, 220, 160);
+      ctx.fillRect(400, 380, 150, 120);
+
+      ctx.strokeStyle = '#2d3748';
+      ctx.lineWidth = 16;
       ctx.beginPath();
       ctx.moveTo(250, 0); ctx.lineTo(250, 1200);
       ctx.moveTo(480, 0); ctx.lineTo(480, 1200);
+      ctx.moveTo(700, 0); ctx.lineTo(700, 1200);
       ctx.moveTo(0, 250); ctx.lineTo(1200, 250);
-      ctx.moveTo(0, 550); ctx.lineTo(1200, 550);
+      ctx.moveTo(0, 450); ctx.lineTo(1200, 450);
+      ctx.moveTo(0, 650); ctx.lineTo(1200, 650);
       ctx.stroke();
 
-      L.imageOverlay(mapCanvas.toDataURL(), bounds).addTo(map);
+      ctx.fillStyle = '#222b38';
+      for(let x=50; x<750; x+=75) {
+        for(let y=50; y<1150; y+=65) {
+          if (Math.random() > 0.15) {
+            ctx.fillRect(x, y, 62, 52);
+          }
+        }
+      }
+
+      const imageUrl = mapCanvas.toDataURL();
+      L.imageOverlay(imageUrl, bounds).addTo(map);
       map.fitBounds(bounds);
+
       renderMapMarkers('all');
+      createAvatarMapMarker(500, 320);
+    }
+
+    function createAvatarMapMarker(x, y) {
+      if (avatarMarker) map.removeLayer(avatarMarker);
+
+      const avatarHtml = `
+        <div class="avatar-map-marker">
+          <canvas id="map-avatar-canvas" width="100" height="140"></canvas>
+        </div>
+      `;
+
+      const customIcon = L.divIcon({
+        html: avatarHtml,
+        className: 'custom-avatar-leaflet-icon',
+        iconSize: [50, 70],
+        iconAnchor: [25, 70]
+      });
+
+      avatarMarker = L.marker([y, x], { icon: customIcon }).addTo(map);
+      avatarMarker.bindPopup(`
+        <div style="color:#000; text-align:center; font-family:'Inter';">
+          <strong>¡Aquí estás tú! (Chapinero / Konrad Lorenz)</strong><br/>
+          <span style="font-size:0.8rem; color:#666;">${gameState.username}</span>
+        </div>
+      `);
+
+      setTimeout(() => {
+        renderAIAvatar('map-avatar-canvas', gameState.avatarParams);
+      }, 100);
     }
 
     function renderMapMarkers(filter) {
@@ -831,27 +1525,43 @@
 
       unifiedLocations.forEach(loc => {
         if (filter !== 'all' && loc.type !== filter) return;
-        let pinColor = loc.type === 'comercio' ? '#f59e0b' : (loc.type === 'universidad' ? '#8b5cf6' : '#10b981');
+
+        let pinColor = '#10b981';
+        if (loc.type === 'comercio') pinColor = '#f59e0b';
+        else if (loc.type === 'universidad') pinColor = '#8b5cf6';
+        else if (loc.type === 'gym') pinColor = '#06b6d4';
 
         const marker = L.circleMarker([loc.y, loc.x], {
-          radius: 12, fillColor: pinColor, color: '#ffffff', weight: 2, fillOpacity: 0.9
+          radius: 12,
+          fillColor: pinColor,
+          color: '#ffffff', weight: 2, opacity: 1, fillOpacity: 0.9
         }).addTo(map);
 
-        marker.bindPopup(`<strong>${loc.title}</strong><br/>${loc.desc}<br/><b>+${loc.xp} XP</b>`);
+        marker.bindPopup(`
+          <div style="color: #000; font-family: 'Inter', sans-serif;">
+            <strong style="font-size: 0.95rem;">${loc.title}</strong><br/>
+            <span style="font-size: 0.8rem; color: #555;">${loc.desc}</span><br/>
+            <div style="margin-top: 8px; font-weight: bold; color: #d97706;">+${loc.xp} XP | +${loc.coins} Monedas</div>
+          </div>
+        `);
+
         markers.push(marker);
       });
     }
 
-    function filterMap(cat) {
+    function filterMap(cat, evt) {
       document.querySelectorAll('.filter-chip').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+      if (evt && evt.target) evt.target.classList.add('active');
       renderMapMarkers(cat);
     }
 
-    function toggleGPS() { gameState.gpsActive = document.getElementById('gps-toggle').checked; }
+    function toggleGPS() {
+      gameState.gpsActive = document.getElementById('gps-toggle').checked;
+    }
 
     function renderQuests() {
-      document.getElementById('quests-container').innerHTML = questsData.map(q => `
+      const container = document.getElementById('quests-container');
+      container.innerHTML = questsData.map(q => `
         <div class="quest-card ${q.type}-type ${q.completed ? 'completed' : ''}">
           <span class="quest-tag ${q.type}">${q.tag}</span>
           <div>
@@ -862,7 +1572,16 @@
             <span class="reward-xp">+${q.xp} XP</span>
             <span class="reward-coins">+${q.coins} Monedas</span>
           </div>
-          ${q.completed ? `<div class="btn-completed-badge"><span>Completada</span></div>` : `<button class="btn-action" onclick="openCameraModal(${q.id}, false)"><i class="fa-solid fa-camera"></i> Tomar Foto</button>`}
+          ${q.completed ? `
+            <div class="btn-completed-badge">
+              <span><i class="fa-solid fa-circle-check"></i> Completada con Éxito</span>
+              ${q.photoEvidence ? `<img src="${q.photoEvidence}" class="attached-evidence-preview" title="Evidencia">` : ''}
+            </div>
+          ` : `
+            <button class="btn-action" onclick="openCameraModal(${q.id}, false)">
+              <i class="fa-solid fa-camera"></i> Tomar Foto con Cámara
+            </button>
+          `}
         </div>
       `).join('');
     }
@@ -870,15 +1589,30 @@
     function renderStores() {
       const container = document.getElementById('stores-container');
       if (!container) return;
-      container.innerHTML = unifiedLocations.filter(l => l.isStore).map(s => `
-        <div class="quest-card rainy-type ${s.completed ? 'completed' : ''}">
-          <span class="quest-tag rainy">Aliado</span>
+
+      const storeItems = unifiedLocations.filter(loc => loc.isStore);
+
+      container.innerHTML = storeItems.map(s => `
+        <div class="quest-card ${s.type}-type ${s.completed ? 'completed' : ''}">
+          <span class="quest-tag rainy">${s.tag}</span>
           <div>
-            <div class="quest-title">${s.title}</div>
+            <div class="quest-title"><i class="fa-solid fa-store" style="color: var(--gold-primary);"></i> ${s.title}</div>
             <div class="quest-desc">${s.desc}</div>
           </div>
-          <div class="quest-rewards"><span class="reward-xp">+${s.xp} XP</span></div>
-          ${s.completed ? `<div class="btn-completed-badge"><span>Visitado</span></div>` : `<button class="btn-action" onclick="openCameraModal(${s.id}, true)"><i class="fa-solid fa-camera"></i> Validar</button>`}
+          <div class="quest-rewards">
+            <span class="reward-xp">+${s.xp} XP</span>
+            <span class="reward-coins">+${s.coins} Monedas</span>
+          </div>
+          ${s.completed ? `
+            <div class="btn-completed-badge">
+              <span><i class="fa-solid fa-circle-check"></i> Tienda Validada y Visitada</span>
+              ${s.photoEvidence ? `<img src="${s.photoEvidence}" class="attached-evidence-preview" title="Evidencia">` : ''}
+            </div>
+          ` : `
+            <button class="btn-action" onclick="openCameraModal(${s.id}, true)">
+              <i class="fa-solid fa-camera-retro"></i> Validar Visita con Cámara
+            </button>
+          `}
         </div>
       `).join('');
     }
@@ -886,58 +1620,108 @@
     function renderRewards() {
       const container = document.getElementById('rewards-container');
       if (!container) return;
-      container.innerHTML = unifiedLocations.filter(l => l.isStore).map(r => `
+
+      const storeItems = unifiedLocations.filter(loc => loc.isStore);
+
+      container.innerHTML = storeItems.map(r => `
         <div class="reward-card">
           <div class="reward-icon"><i class="fa-solid ${r.rewardIcon}"></i></div>
-          <strong style="font-size: 0.95rem;">${r.rewardTitle}</strong>
-          <span style="font-size: 0.75rem; color: var(--gold-primary);">${r.title}</span>
-          <div style="font-family: 'Orbitron'; color: var(--gold-light); font-size: 0.85rem;"><i class="fa-solid fa-coins"></i> ${r.rewardCost}</div>
-          <button class="btn-action" onclick="redeemReward(${r.rewardCost}, '${r.rewardTitle}', '${r.title}')">Canjear</button>
+          <strong style="font-size: 1rem;">${r.rewardTitle}</strong>
+          <span style="font-size: 0.8rem; color: var(--gold-primary); font-weight: bold;">Establecimiento: ${r.title}</span>
+          <div style="font-family: 'Orbitron'; color: var(--gold-light); font-weight: bold;">
+            <i class="fa-solid fa-coins"></i> ${r.rewardCost} Monedas
+          </div>
+          <button class="btn-action" onclick="redeemReward(${r.rewardCost}, '${r.rewardTitle}', '${r.title}')">
+            Canjear Premio
+          </button>
         </div>
       `).join('');
     }
 
-    async function openCameraModal(itemId, isStore) {
-      selectedItemForUpload = isStore ? unifiedLocations.find(l => l.id === itemId) : questsData.find(q => q.id === itemId);
+    async function openCameraModal(itemId, isUnifiedLocation) {
+      if (isUnifiedLocation) {
+        selectedItemForUpload = unifiedLocations.find(l => l.id === itemId);
+      } else {
+        selectedItemForUpload = questsData.find(q => q.id === itemId);
+      }
+
+      if (!selectedItemForUpload) return;
+
       document.getElementById('evidence-quest-title').innerText = selectedItemForUpload.title;
       currentCapturedImageData = null;
+
       document.getElementById('photo-canvas').style.display = 'none';
       document.getElementById('webcam-video').style.display = 'block';
       document.getElementById('camera-placeholder').style.display = 'flex';
+      
       document.getElementById('btn-capture-photo').style.display = 'flex';
       document.getElementById('btn-submit-evidence').style.display = 'none';
+
       document.getElementById('upload-evidence-modal').style.display = 'flex';
 
       try {
         mediaStream = await navigator.mediaDevices.getUserMedia({ video: { width: 640, height: 480 }, audio: false });
-        document.getElementById('webcam-video').srcObject = mediaStream;
-        document.getElementById('camera-placeholder').style.display = 'none';
-      } catch (e) {
-        document.getElementById('camera-placeholder').innerHTML = `<span>Cámara simulada lista</span>`;
+        const videoEl = document.getElementById('webcam-video');
+        videoEl.srcObject = mediaStream;
+        videoEl.onloadedmetadata = () => {
+          document.getElementById('camera-placeholder').style.display = 'none';
+        };
+      } catch (err) {
+        console.warn("Cámara no disponible o permisos denegados, usando simulación visual de cámara:", err);
+        document.getElementById('camera-placeholder').innerHTML = `
+          <i class="fa-solid fa-triangle-exclamation" style="font-size: 2rem; color: var(--gold-primary);"></i>
+          <span>Cámara no disponible en este navegador. Haz clic abajo para generar una foto simulada.</span>
+        `;
       }
     }
 
     function capturePhotoFromCamera() {
+      const videoEl = document.getElementById('webcam-video');
       const canvas = document.getElementById('photo-canvas');
-      canvas.width = 640; canvas.height = 480;
       const ctx = canvas.getContext('2d');
-      ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, 640, 480);
-      ctx.fillStyle = '#f59e0b'; ctx.font = 'bold 24px Orbitron'; ctx.fillText('LIFE XP BOGOTÁ', 50, 220);
+
+      canvas.width = 640;
+      canvas.height = 480;
+
+      if (mediaStream && videoEl.readyState === videoEl.HAVE_ENOUGH_DATA) {
+        ctx.drawImage(videoEl, 0, 0, canvas.width, canvas.height);
+      } else {
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#f59e0b';
+        ctx.font = 'bold 28px Orbitron';
+        ctx.fillText('LIFE XP CHAPINERO - FOTO', 60, 200);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '20px Inter';
+        ctx.fillText(selectedItemForUpload ? selectedItemForUpload.title : 'Validación', 60, 250);
+      }
 
       currentCapturedImageData = canvas.toDataURL('image/png');
-      document.getElementById('webcam-video').style.display = 'none';
+
+      videoEl.style.display = 'none';
       canvas.style.display = 'block';
+
       document.getElementById('btn-capture-photo').style.display = 'none';
       document.getElementById('btn-submit-evidence').style.display = 'flex';
-      if (mediaStream) mediaStream.getTracks().forEach(t => t.stop());
+
+      stopCameraStream();
+    }
+
+    function stopCameraStream() {
+      if (mediaStream) {
+        mediaStream.getTracks().forEach(track => track.stop());
+        mediaStream = null;
+      }
     }
 
     function submitQuestWithEvidence() {
-      if (!selectedItemForUpload) return;
+      if (!selectedItemForUpload || !currentCapturedImageData) return;
+
       selectedItemForUpload.completed = true;
       selectedItemForUpload.photoEvidence = currentCapturedImageData;
+
       gameState.xp += selectedItemForUpload.xp;
-      gameState.coins += selectedItemForUpload.coins || 50;
+      gameState.coins += selectedItemForUpload.coins;
       gameState.completedQuestsCount++;
 
       while (gameState.xp >= gameState.maxXp) {
@@ -949,52 +1733,93 @@
       updateHUD();
       renderQuests();
       renderStores();
-      document.getElementById('upload-evidence-modal').style.display = 'none';
-      document.getElementById('reward-evidence-preview').src = currentCapturedImageData;
+      closeEvidenceModal();
+
+      document.getElementById('modal-title').innerText = selectedItemForUpload.isStore ? '¡Visita a Tienda Aliada Verificada!' : '¡Misión Verificada!';
+      document.getElementById('modal-desc').innerText = `Has acumulado +${selectedItemForUpload.xp} XP y +${selectedItemForUpload.coins} Monedas de Oro.`;
+      
+      document.getElementById('modal-body-content').innerHTML = `
+        <div style="margin: 5px 0;">
+          <span style="font-size: 0.75rem; color: var(--accent-green); display: block; margin-bottom: 5px; font-weight: bold;">Foto de Evidencia Capturada:</span>
+          <img src="${currentCapturedImageData}" style="max-height: 130px; border-radius: 10px; border: 2px solid var(--accent-green); object-fit: cover;" alt="Evidencia validada">
+        </div>
+      `;
+
+      playSound('complete');
       document.getElementById('reward-modal').style.display = 'flex';
     }
 
     function closeEvidenceModal() {
-      if (mediaStream) mediaStream.getTracks().forEach(t => t.stop());
+      stopCameraStream();
       document.getElementById('upload-evidence-modal').style.display = 'none';
     }
 
-    function closeRewardModal() { document.getElementById('reward-modal').style.display = 'none'; }
+    function closeRewardModal() {
+      document.getElementById('reward-modal').style.display = 'none';
+    }
 
     function redeemReward(cost, title, storeName) {
       if (gameState.coins >= cost) {
         gameState.coins -= cost;
         updateHUD();
-        document.getElementById('modal-title').innerText = '¡Premio Canjeado!';
+        playSound('coin');
+
+        const randomCode = 'XP-' + Math.floor(1000 + Math.random() * 9000) + '-2026';
+
+        document.getElementById('modal-title').innerText = '¡Premio Canjeado con Éxito!';
+        document.getElementById('modal-desc').innerText = `Has utilizado tus monedas para obtener el siguiente beneficio:`;
+        
         document.getElementById('modal-body-content').innerHTML = `
           <div class="reward-ticket-card">
-            <div class="ticket-header"><span>Voucher Oficial</span><span>Bogotá</span></div>
+            <div class="ticket-header">
+              <span><i class="fa-solid fa-ticket"></i> Voucher Oficial LIFE XP</span>
+              <span>Konrad Lorenz / Chapinero</span>
+            </div>
             <div class="ticket-title">${title}</div>
-            <div class="ticket-store">${storeName}</div>
-            <div class="ticket-code">CÓDIGO: XP-${Math.floor(1000 + Math.random()*9000)}</div>
-          </div>`;
+            <div class="ticket-store"><i class="fa-solid fa-store" style="color: var(--gold-primary);"></i> Establecimiento: ${storeName}</div>
+            <div class="ticket-code">CÓDIGO: ${randomCode}</div>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted); text-align: center;">Presenta este código digital en caja para hacer efectivo tu beneficio.</span>
+        `;
+
         document.getElementById('reward-modal').style.display = 'flex';
-      } else { alert('Monedas insuficientes.'); }
+      } else { 
+        alert('No tienes suficientes monedas acumuladas.'); 
+      }
     }
 
     function updateHUD() {
       document.getElementById('hud-lvl').innerText = `LVL ${gameState.lvl}`;
-      document.getElementById('xp-num').innerText = `${gameState.xp} / ${gameState.maxXp} XP`;
-      document.getElementById('xp-bar').style.width = `${(gameState.xp / gameState.maxXp)*100}%`;
+      document.getElementById('xp-num').innerText = `${gameState.xp.toLocaleString()} / ${gameState.maxXp.toLocaleString()} XP`;
+      document.getElementById('xp-bar').style.width = `${(gameState.xp / gameState.maxXp) * 100}%`;
       document.getElementById('coin-count').innerText = gameState.coins;
+
       document.getElementById('completed-count').innerText = gameState.completedQuestsCount;
       document.getElementById('profile-lvl-text').innerText = `LVL ${gameState.lvl}`;
     }
 
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-view').forEach(v => v.classList.remove('active'));
-      document.querySelectorAll('.nav-item, .mobile-nav-item').forEach(i => i.classList.remove('active'));
-      document.getElementById(`view-${tabId}`).classList.add('active');
-      event.currentTarget.classList.add('active');
-      if (tabId === 'map' && map) setTimeout(() => map.invalidateSize(), 100);
+    function switchTab(tabId, evt) {
+      document.querySelectorAll('.tab-view').forEach(view => view.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+
+      const targetView = document.getElementById(`view-${tabId}`);
+      if (targetView) targetView.classList.add('active');
+
+      if (evt && evt.currentTarget) {
+        evt.currentTarget.classList.add('active');
+      }
+
+      if (tabId === 'map') {
+        setTimeout(() => {
+          initMap();
+          if (map) map.invalidateSize();
+        }, 100);
+      }
     }
 
-    window.onload = function() { renderAIAvatar('quiz-avatar-canvas', gameState.avatarParams); };
+    window.onload = function() {
+      renderAIAvatar('quiz-avatar-canvas', gameState.avatarParams);
+    };
   </script>
 </body>
 </html>
