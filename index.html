@@ -136,7 +136,7 @@
 
     .options-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      grid-template-columns: repeat( auto-fit, minmax(110px, 1fr) );
       gap: 8px;
     }
 
@@ -846,23 +846,23 @@
         </div>
 
         <ul class="nav-menu">
-          <li class="nav-item active" onclick="switchTab('map', event)">
+          <li class="nav-item active" onclick="switchTab('map')">
             <i class="fa-solid fa-map-location-dot"></i>
             <span>Mapa Chapinero - Konrad Lorenz</span>
           </li>
-          <li class="nav-item" onclick="switchTab('quests', event)">
+          <li class="nav-item" onclick="switchTab('quests')">
             <i class="fa-solid fa-scroll"></i>
             <span>Catálogo de Retos</span>
           </li>
-          <li class="nav-item" onclick="switchTab('stores', event)">
+          <li class="nav-item" onclick="switchTab('stores')">
             <i class="fa-solid fa-store"></i>
             <span>Tiendas Aliadas</span>
           </li>
-          <li class="nav-item" onclick="switchTab('rewards', event)">
+          <li class="nav-item" onclick="switchTab('rewards')">
             <i class="fa-solid fa-gift"></i>
             <span>Tienda de Premios</span>
           </li>
-          <li class="nav-item" onclick="switchTab('profile', event)">
+          <li class="nav-item" onclick="switchTab('profile')">
             <i class="fa-solid fa-user-shield"></i>
             <span>Perfil y Privacidad</span>
           </li>
@@ -936,11 +936,11 @@
                 <i class="fa-solid fa-filter"></i>
               </div>
               <div class="filter-btn-group">
-                <button class="filter-chip active" onclick="filterMap('all', event)">Todos</button>
-                <button class="filter-chip" onclick="filterMap('parque', event)">Parques</button>
-                <button class="filter-chip" onclick="filterMap('comercio', event)">Comercios</button>
-                <button class="filter-chip" onclick="filterMap('universidad', event)">Universidades</button>
-                <button class="filter-chip" onclick="filterMap('gym', event)">Gimnasios</button>
+                <button class="filter-chip active" onclick="filterMap('all')">Todos</button>
+                <button class="filter-chip" onclick="filterMap('parque')">Parques</button>
+                <button class="filter-chip" onclick="filterMap('comercio')">Comercios</button>
+                <button class="filter-chip" onclick="filterMap('universidad')">Universidades</button>
+                <button class="filter-chip" onclick="filterMap('gym')">Gimnasios</button>
               </div>
             </div>
 
@@ -1115,6 +1115,7 @@
     let currentCapturedImageData = null;
     let mediaStream = null;
 
+    // UBICACIONES EXACTAS COINCIDENTES CON LA REFERENCIA DE CHAPINERO / KONRAD LORENZ
     const unifiedLocations = [
       { id: 1, title: 'Fundación Universitaria Konrad Lorenz', type: 'universidad', tag: 'Universidad / Aliada', x: 500, y: 320, desc: 'Institución central de ingeniería, software y desarrollo tecnológico.', xp: 300, coins: 100, completed: false, photoEvidence: null, isStore: true, rewardTitle: 'Kit Software & Café Konrad', rewardCost: 350, rewardIcon: 'fa-bolt' },
       { id: 2, title: 'Movistar Arena - El Campín', type: 'parque', tag: 'Entretenimiento', x: 260, y: 300, desc: 'Gran escenario multipropósito de conciertos y eventos masivos.', xp: 250, coins: 80, completed: false, photoEvidence: null, isStore: false },
@@ -1175,8 +1176,8 @@
 
       ctx.fillStyle = params.shoesColor;
       ctx.beginPath();
-      ctx.rect(w*0.35 - w*0.05*bw, h*0.88, w*0.14*bw, h*0.045);
-      ctx.rect(w*0.65 - w*0.09*bw, h*0.88, w*0.14*bw, h*0.045);
+      ctx.roundRect(w*0.35 - w*0.05*bw, h*0.88, w*0.14*bw, h*0.045, [6]);
+      ctx.roundRect(w*0.65 - w*0.09*bw, h*0.88, w*0.14*bw, h*0.045, [6]);
       ctx.fill();
 
       ctx.fillStyle = '#ffffff';
@@ -1193,14 +1194,14 @@
 
       ctx.fillStyle = params.clothingColor;
       ctx.beginPath();
-      ctx.rect(w*0.27/bw, h*0.3, w*0.46*bw, h*0.3);
+      ctx.roundRect(w*0.27/bw, h*0.3, w*0.46*bw, h*0.3, [14]);
       ctx.fill();
 
       if (params.clothingStyle === 'hoodie') {
         ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.moveTo(w*0.5, h*0.33); ctx.lineTo(w*0.5, h*0.59); ctx.stroke();
         ctx.fillStyle = 'rgba(0,0,0,0.1)';
-        ctx.fillRect(w*0.35, h*0.46, w*0.3, h*0.11);
+        ctx.roundRect(w*0.35, h*0.46, w*0.3, h*0.11, [6]); ctx.fill();
       } else if (params.clothingStyle === 'suit') {
         ctx.fillStyle = '#ffffff';
         ctx.beginPath(); ctx.moveTo(w*0.42, h*0.3); ctx.lineTo(w*0.5, h*0.42); ctx.lineTo(w*0.58, h*0.3); ctx.fill();
@@ -1452,27 +1453,36 @@
       mapCanvas.height = 1200;
       const ctx = mapCanvas.getContext('2d');
       
+      // Fondo gris oscuro/satelital idéntico al estilo de la referencia de Chapinero
       ctx.fillStyle = '#1c222d';
       ctx.fillRect(0,0,1200,1200);
 
+      // Cerros orientales oscuros a la derecha (Montañas de Bogotá)
       ctx.fillStyle = '#11161f';
       ctx.fillRect(800, 0, 400, 1200);
 
+      // Parques y zonas verdes (Parque de los Novios, Parque de los Hippies)
       ctx.fillStyle = '#263a29';
-      ctx.fillRect(150, 100, 220, 160);
-      ctx.fillRect(400, 380, 150, 120);
+      ctx.beginPath(); ctx.roundRect(150, 100, 220, 160, [18]); ctx.fill(); // Parque de los Novios
+      ctx.beginPath(); ctx.roundRect(400, 380, 150, 120, [15]); ctx.fill(); // Parque de los Hippies
 
+      // Avenidas principales longitudinales y diagonales (Autopista Norte / NQS, Av. Caracas, Carrera 7, Calle 53, 63, 68)
       ctx.strokeStyle = '#2d3748';
       ctx.lineWidth = 16;
       ctx.beginPath();
+      // NQS / Autopista Norte longitudinal
       ctx.moveTo(250, 0); ctx.lineTo(250, 1200);
+      // Av. Caracas
       ctx.moveTo(480, 0); ctx.lineTo(480, 1200);
+      // Carrera 7 / Oriental
       ctx.moveTo(700, 0); ctx.lineTo(700, 1200);
+      // Calles transversales
       ctx.moveTo(0, 250); ctx.lineTo(1200, 250);
       ctx.moveTo(0, 450); ctx.lineTo(1200, 450);
       ctx.moveTo(0, 650); ctx.lineTo(1200, 650);
       ctx.stroke();
 
+      // Cuadros de manzanas urbanas detalladas de Chapinero
       ctx.fillStyle = '#222b38';
       for(let x=50; x<750; x+=75) {
         for(let y=50; y<1150; y+=65) {
@@ -1487,7 +1497,7 @@
       map.fitBounds(bounds);
 
       renderMapMarkers('all');
-      createAvatarMapMarker(500, 320);
+      createAvatarMapMarker(500, 320); // Posición inicial en Konrad Lorenz
     }
 
     function createAvatarMapMarker(x, y) {
@@ -1549,9 +1559,9 @@
       });
     }
 
-    function filterMap(cat, evt) {
+    function filterMap(cat) {
       document.querySelectorAll('.filter-chip').forEach(btn => btn.classList.remove('active'));
-      if (evt && evt.target) evt.target.classList.add('active');
+      event.target.classList.add('active');
       renderMapMarkers(cat);
     }
 
@@ -1798,16 +1808,14 @@
       document.getElementById('profile-lvl-text').innerText = `LVL ${gameState.lvl}`;
     }
 
-    function switchTab(tabId, evt) {
+    function switchTab(tabId) {
       document.querySelectorAll('.tab-view').forEach(view => view.classList.remove('active'));
       document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
 
       const targetView = document.getElementById(`view-${tabId}`);
       if (targetView) targetView.classList.add('active');
 
-      if (evt && evt.currentTarget) {
-        evt.currentTarget.classList.add('active');
-      }
+      event.currentTarget.classList.add('active');
 
       if (tabId === 'map') {
         setTimeout(() => {
