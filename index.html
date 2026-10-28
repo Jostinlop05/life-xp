@@ -13,9 +13,9 @@
   
   <style>
     :root {
-      --bg-dark: #0a0e17;
-      --bg-card: #121826;
-      --bg-card-hover: #1a2336;
+      --bg-dark: #070913;
+      --bg-card: #101626;
+      --bg-card-hover: #182238;
       --navy-primary: #0f172a;
       --navy-secondary: #1e293b;
       --gold-primary: #f59e0b;
@@ -26,9 +26,9 @@
       --accent-purple: #8b5cf6;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --border-color: rgba(245, 158, 11, 0.2);
+      --border-color: rgba(245, 158, 11, 0.25);
       --border-subtle: rgba(255, 255, 255, 0.08);
-      --sidebar-width: 260px;
+      --sidebar-width: 270px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
@@ -52,7 +52,7 @@
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: radial-gradient(circle at center, #1e293b 0%, #0a0e17 100%);
+      background: radial-gradient(circle at center, #1e293b 0%, #070913 100%);
       z-index: 5000;
       display: flex;
       align-items: center;
@@ -64,23 +64,24 @@
     .wizard-card {
       background: var(--bg-card);
       border: 2px solid var(--gold-primary);
-      box-shadow: 0 0 35px var(--gold-glow);
+      box-shadow: 0 0 45px var(--gold-glow);
       border-radius: 20px;
-      padding: 25px 30px;
-      width: 880px;
+      padding: 28px 32px;
+      width: 940px;
       max-width: 100%;
     }
 
     .wizard-header {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .wizard-title {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       color: var(--gold-light);
       margin-bottom: 5px;
+      letter-spacing: 1px;
     }
 
     .wizard-subtitle {
@@ -104,7 +105,7 @@
       border: 2px solid var(--gold-primary);
       border-radius: 16px;
       padding: 15px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
     }
 
     .avatar-canvas-preview {
@@ -118,7 +119,7 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
-      max-height: 400px;
+      max-height: 410px;
       overflow-y: auto;
       padding-right: 5px;
     }
@@ -128,15 +129,16 @@
 
     .question-title {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: var(--gold-primary);
       text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .options-grid {
       display: grid;
-      grid-template-columns: repeat( auto-fit, minmax(110px, 1fr) );
+      grid-template-columns: repeat( auto-fit, minmax(115px, 1fr) );
       gap: 8px;
     }
 
@@ -144,7 +146,7 @@
       background: var(--navy-secondary);
       border: 1px solid var(--border-subtle);
       color: var(--text-main);
-      padding: 8px 10px;
+      padding: 9px 11px;
       border-radius: 8px;
       font-size: 0.8rem;
       cursor: pointer;
@@ -160,9 +162,9 @@
 
     .option-btn.selected {
       border-color: var(--gold-light);
-      background: rgba(245, 158, 11, 0.2);
+      background: rgba(245, 158, 11, 0.22);
       color: var(--gold-light);
-      box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.25);
     }
 
     .color-picker-group {
@@ -189,8 +191,8 @@
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       border: 2px solid var(--gold-primary);
       border-radius: 50%;
       cursor: pointer;
@@ -208,7 +210,7 @@
 
     .form-input {
       width: 100%;
-      padding: 11px 14px;
+      padding: 12px 15px;
       background: var(--navy-secondary);
       border: 1px solid var(--border-color);
       border-radius: 8px;
@@ -221,8 +223,8 @@
     .wizard-footer {
       display: flex;
       justify-content: space-between;
-      margin-top: 20px;
-      padding-top: 15px;
+      margin-top: 22px;
+      padding-top: 16px;
       border-top: 1px solid var(--border-subtle);
     }
 
@@ -230,11 +232,11 @@
       background: linear-gradient(135deg, var(--gold-primary), #d97706);
       color: #000;
       border: none;
-      padding: 10px 20px;
+      padding: 11px 22px;
       border-radius: 8px;
       font-family: 'Rajdhani', sans-serif;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 1.05rem;
       cursor: pointer;
       transition: all 0.2s;
       display: flex;
@@ -244,7 +246,7 @@
     }
 
     .btn-action:hover {
-      box-shadow: 0 0 15px var(--gold-glow);
+      box-shadow: 0 0 18px var(--gold-glow);
       transform: scale(1.02);
     }
 
@@ -252,7 +254,7 @@
       background: var(--navy-secondary);
       color: var(--text-main);
       border: 1px solid var(--border-subtle);
-      padding: 10px 18px;
+      padding: 11px 18px;
       border-radius: 8px;
       font-size: 0.9rem;
       cursor: pointer;
@@ -263,10 +265,8 @@
     #app-container {
       display: flex;
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
       overflow: hidden;
     }
 
@@ -278,21 +278,21 @@
       flex-direction: column;
       justify-content: space-between;
       z-index: 1000;
-      box-shadow: 4px 0 20px rgba(0,0,0,0.5);
+      box-shadow: 4px 0 25px rgba(0,0,0,0.6);
       height: 100%;
     }
 
     .brand-header {
-      padding: 20px;
+      padding: 22px 20px;
       display: flex;
       align-items: center;
       gap: 12px;
       border-bottom: 1px solid var(--border-subtle);
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(245, 158, 11, 0.1));
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(245, 158, 11, 0.12));
     }
 
     .brand-icon {
-      width: 42px; height: 42px;
+      width: 44px; height: 44px;
       background: linear-gradient(135deg, var(--gold-primary), #b45309);
       border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
@@ -303,7 +303,7 @@
     .brand-title {
       font-family: 'Orbitron', sans-serif;
       font-weight: 900;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       letter-spacing: 1.5px;
       background: linear-gradient(to right, #fff, var(--gold-light));
       -webkit-background-clip: text;
@@ -320,10 +320,10 @@
 
     .nav-menu {
       list-style: none;
-      padding: 15px 10px;
+      padding: 18px 12px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
       flex-grow: 1;
     }
 
@@ -332,12 +332,12 @@
       align-items: center;
       gap: 14px;
       padding: 12px 16px;
-      border-radius: 8px;
+      border-radius: 9px;
       color: var(--text-muted);
       cursor: pointer;
       transition: all 0.25s ease;
       font-family: 'Rajdhani', sans-serif;
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       font-weight: 600;
       border: 1px solid transparent;
     }
@@ -345,30 +345,30 @@
     .nav-item:hover {
       background: var(--bg-card-hover);
       color: var(--text-main);
-      border-color: rgba(245, 158, 11, 0.2);
+      border-color: rgba(245, 158, 11, 0.25);
       transform: translateX(4px);
     }
 
     .nav-item.active {
-      background: linear-gradient(90deg, rgba(245, 158, 11, 0.15), transparent);
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.18), transparent);
       color: var(--gold-light);
       border-left: 4px solid var(--gold-primary);
-      border-color: rgba(245, 158, 11, 0.3);
-      box-shadow: 0 0 15px rgba(245, 158, 11, 0.1);
+      border-color: rgba(245, 158, 11, 0.35);
+      box-shadow: 0 0 18px rgba(245, 158, 11, 0.12);
     }
 
     .nav-item i { font-size: 1.2rem; width: 24px; text-align: center; }
 
     .sidebar-footer {
-      padding: 15px;
+      padding: 16px 20px;
       border-top: 1px solid var(--border-subtle);
-      background: rgba(15, 23, 42, 0.6);
+      background: rgba(15, 23, 42, 0.7);
     }
 
     .university-badge {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
-      line-height: 1.4;
+      line-height: 1.45;
       display: flex;
       flex-direction: column;
       gap: 2px;
@@ -387,28 +387,28 @@
     }
 
     .top-hud {
-      height: 70px;
+      height: 75px;
       background-color: var(--bg-card);
       border-bottom: 1px solid var(--border-color);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 25px;
+      padding: 0 28px;
       z-index: 900;
       width: 100%;
     }
 
-    .hud-stats { display: flex; align-items: center; gap: 25px; }
+    .hud-stats { display: flex; align-items: center; gap: 28px; }
 
-    .user-profile-summary { display: flex; align-items: center; gap: 12px; }
+    .user-profile-summary { display: flex; align-items: center; gap: 14px; }
 
     .avatar-container { position: relative; }
 
     .avatar-img-hud {
-      width: 48px; height: 48px;
+      width: 50px; height: 50px;
       border-radius: 50%;
       border: 2px solid var(--gold-primary);
-      box-shadow: 0 0 10px var(--gold-glow);
+      box-shadow: 0 0 12px var(--gold-glow);
       background: #ffffff;
       overflow: hidden;
       display: flex; align-items: center; justify-content: center;
@@ -421,47 +421,47 @@
       color: #000;
       font-size: 0.65rem;
       font-weight: 900;
-      padding: 1px 5px;
+      padding: 1px 6px;
       border-radius: 10px;
       font-family: 'Orbitron', sans-serif;
     }
 
     .user-text-info { display: flex; flex-direction: column; }
 
-    .user-name { font-weight: 700; font-size: 0.95rem; color: var(--text-main); }
+    .user-name { font-weight: 700; font-size: 1rem; color: var(--text-main); }
 
-    .user-rank { font-size: 0.75rem; color: var(--gold-primary); font-family: 'Rajdhani', sans-serif; font-weight: 600; }
+    .user-rank { font-size: 0.78rem; color: var(--gold-primary); font-family: 'Rajdhani', sans-serif; font-weight: 600; }
 
-    .xp-bar-container { width: 220px; display: flex; flex-direction: column; gap: 4px; }
+    .xp-bar-container { width: 230px; display: flex; flex-direction: column; gap: 4px; }
 
     .xp-text { display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); font-family: 'Rajdhani', sans-serif; }
 
-    .xp-track { height: 10px; background: var(--navy-secondary); border-radius: 5px; overflow: hidden; border: 1px solid rgba(245, 158, 11, 0.3); position: relative; }
+    .xp-track { height: 10px; background: var(--navy-secondary); border-radius: 5px; overflow: hidden; border: 1px solid rgba(245, 158, 11, 0.35); position: relative; }
 
-    .xp-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #d97706, var(--gold-light)); box-shadow: 0 0 10px var(--gold-primary); transition: width 0.5s ease; }
+    .xp-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #d97706, var(--gold-light)); box-shadow: 0 0 12px var(--gold-primary); transition: width 0.5s ease; }
 
-    .currency-group { display: flex; align-items: center; gap: 18px; }
+    .currency-group { display: flex; align-items: center; gap: 15px; }
 
     .currency-card {
-      background: rgba(30, 41, 59, 0.7);
+      background: rgba(30, 41, 59, 0.8);
       border: 1px solid var(--border-subtle);
-      padding: 6px 14px;
+      padding: 7px 15px;
       border-radius: 20px;
       display: flex; align-items: center; gap: 8px;
       font-family: 'Orbitron', sans-serif;
       font-size: 0.85rem; font-weight: 700;
     }
 
-    .currency-card.gold { color: var(--gold-light); border-color: rgba(245, 158, 11, 0.4); }
-    .currency-card.streak { color: #f97316; border-color: rgba(249, 115, 22, 0.4); }
+    .currency-card.gold { color: var(--gold-light); border-color: rgba(245, 158, 11, 0.45); }
+    .currency-card.streak { color: #f97316; border-color: rgba(249, 115, 22, 0.45); }
 
     .hud-controls { display: flex; align-items: center; gap: 15px; }
 
     .weather-widget {
       display: flex; align-items: center; gap: 8px;
-      background: rgba(15, 23, 42, 0.8);
+      background: rgba(15, 23, 42, 0.85);
       border: 1px solid var(--border-subtle);
-      padding: 6px 12px; border-radius: 8px;
+      padding: 7px 14px; border-radius: 8px;
       font-size: 0.8rem; color: var(--text-muted);
     }
 
@@ -469,15 +469,17 @@
       background: var(--navy-secondary);
       border: 1px solid var(--border-color);
       color: var(--gold-primary);
-      width: 38px; height: 38px; border-radius: 8px;
+      width: 40px; height: 40px; border-radius: 8px;
       cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
     }
+    .btn-audio-toggle:hover { background: var(--bg-card-hover); }
 
     .content-area {
       flex-grow: 1;
       position: relative;
       width: 100%;
-      height: calc(100vh - 70px);
+      height: calc(100vh - 75px);
       overflow: hidden;
     }
 
@@ -486,7 +488,7 @@
       top: 0; left: 0;
       width: 100%; height: 100%;
       display: none;
-      padding: 25px;
+      padding: 28px;
       overflow-y: auto;
     }
     .tab-view.active { display: block; }
@@ -499,23 +501,23 @@
       height: 70px;
       position: relative;
       cursor: pointer;
-      filter: drop-shadow(0 0 10px var(--gold-primary));
+      filter: drop-shadow(0 0 12px var(--gold-primary));
       transition: transform 0.2s ease;
     }
-    .avatar-map-marker:hover { transform: scale(1.15); }
+    .avatar-map-marker:hover { transform: scale(1.18); }
     .avatar-map-marker canvas { width: 100%; height: 100%; border-radius: 8px; }
 
-    .map-overlay-controls { position: absolute; top: 20px; right: 20px; z-index: 800; display: flex; flex-direction: column; gap: 10px; }
+    .map-overlay-controls { position: absolute; top: 20px; right: 20px; z-index: 800; display: flex; flex-direction: column; gap: 12px; }
 
     .map-card-panel {
-      background: rgba(18, 24, 38, 0.92);
-      backdrop-filter: blur(8px);
+      background: rgba(18, 24, 38, 0.94);
+      backdrop-filter: blur(10px);
       border: 1px solid var(--border-color);
-      padding: 15px; border-radius: 12px; width: 280px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      padding: 16px; border-radius: 12px; width: 290px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
     }
 
-    .map-card-title { font-family: 'Orbitron', sans-serif; font-size: 0.9rem; color: var(--gold-light); margin-bottom: 10px; display: flex; justify-content: space-between; }
+    .map-card-title { font-family: 'Orbitron', sans-serif; font-size: 0.9rem; color: var(--gold-light); margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
 
     .filter-btn-group { display: flex; flex-wrap: wrap; gap: 6px; }
 
@@ -523,48 +525,45 @@
       background: var(--navy-secondary);
       border: 1px solid var(--border-subtle);
       color: var(--text-muted);
-      padding: 5px 10px; border-radius: 15px; font-size: 0.75rem; cursor: pointer;
+      padding: 6px 11px; border-radius: 16px; font-size: 0.75rem; cursor: pointer;
+      transition: all 0.2s;
     }
 
-    .filter-chip.active, .filter-chip:hover { background: var(--gold-primary); color: #000; font-weight: bold; }
+    .filter-chip.active, .filter-chip:hover { background: var(--gold-primary); color: #000; font-weight: bold; border-color: var(--gold-primary); }
 
-    .view-header { margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+    .view-header { margin-bottom: 22px; display: flex; justify-content: space-between; align-items: center; }
 
-    .view-title { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; color: var(--text-main); display: flex; align-items: center; gap: 10px; }
+    .view-title { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; color: var(--text-main); display: flex; align-items: center; gap: 12px; }
     .view-title i { color: var(--gold-primary); }
 
-    .quests-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+    .quests-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 22px; }
 
     .quest-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      border-radius: 12px; padding: 18px;
-      display: flex; flex-direction: column; justify-content: space-between; gap: 15px;
+      border-radius: 12px; padding: 20px;
+      display: flex; flex-direction: column; justify-content: space-between; gap: 16px;
       position: relative; overflow: hidden;
       transition: all 0.3s ease;
     }
 
-    .quest-card:hover { border-color: var(--gold-primary); transform: translateY(-4px); box-shadow: 0 8px 20px rgba(245, 158, 11, 0.15); }
-
-    .quest-card.rainy-type { border-left: 4px solid var(--accent-cyan); }
-    .quest-card.group-type { border-left: 4px solid var(--accent-purple); }
-    .quest-card.solo-type { border-left: 4px solid var(--gold-primary); }
+    .quest-card:hover { border-color: var(--gold-primary); transform: translateY(-4px); box-shadow: 0 10px 25px rgba(245, 158, 11, 0.18); }
 
     .quest-card.completed {
       border-color: var(--accent-green) !important;
       background: linear-gradient(135deg, var(--bg-card) 0%, rgba(16, 185, 129, 0.08) 100%);
-      opacity: 0.9;
+      opacity: 0.92;
     }
 
-    .quest-tag { position: absolute; top: 12px; right: 12px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; padding: 3px 8px; border-radius: 10px; font-family: 'Orbitron', sans-serif; }
+    .quest-tag { position: absolute; top: 14px; right: 14px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; padding: 3px 9px; border-radius: 10px; font-family: 'Orbitron', sans-serif; }
     .quest-tag.rainy { background: rgba(6, 182, 212, 0.2); color: var(--accent-cyan); }
     .quest-tag.group { background: rgba(139, 92, 246, 0.2); color: var(--accent-purple); }
     .quest-tag.solo { background: rgba(245, 158, 11, 0.2); color: var(--gold-light); }
 
-    .quest-title { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 5px; }
-    .quest-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
+    .quest-title { font-size: 1.12rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px; }
+    .quest-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.45; }
 
-    .quest-rewards { display: flex; gap: 12px; font-size: 0.8rem; font-weight: 700; font-family: 'Orbitron', sans-serif; }
+    .quest-rewards { display: flex; gap: 14px; font-size: 0.82rem; font-weight: 700; font-family: 'Orbitron', sans-serif; }
     .reward-xp { color: var(--gold-light); }
     .reward-coins { color: #f59e0b; }
 
@@ -586,24 +585,25 @@
       width: 42px; height: 42px; border-radius: 6px; object-fit: cover; border: 1px solid var(--accent-green);
     }
 
-    .rewards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .rewards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 22px; }
 
-    .reward-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 20px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .reward-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 22px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; transition: border-color 0.2s; }
+    .reward-card:hover { border-color: var(--gold-primary); }
 
-    .reward-icon { width: 60px; height: 60px; border-radius: 50%; background: rgba(245, 158, 11, 0.1); border: 1px solid var(--gold-primary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--gold-light); }
+    .reward-icon { width: 64px; height: 64px; border-radius: 50%; background: rgba(245, 158, 11, 0.12); border: 1px solid var(--gold-primary); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: var(--gold-light); box-shadow: 0 0 15px var(--gold-glow); }
 
-    .profile-dashboard { display: grid; grid-template-columns: 320px 1fr; gap: 20px; }
+    .profile-dashboard { display: grid; grid-template-columns: 330px 1fr; gap: 22px; }
 
-    .profile-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; text-align: center; }
+    .profile-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 22px; text-align: center; }
 
     .profile-avatar-display {
       width: 200px; height: 350px; border-radius: 12px;
-      border: 2px solid var(--gold-light); box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-      margin: 0 auto 15px; background: #ffffff;
+      border: 2px solid var(--gold-light); box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      margin: 0 auto 16px; background: #ffffff;
       overflow: hidden; display: flex; align-items: center; justify-content: center;
     }
 
-    .legal-panel { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 20px; line-height: 1.6; }
+    .legal-panel { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 24px; line-height: 1.65; }
 
     .toggle-switch { position: relative; display: inline-block; width: 50px; height: 26px; }
     .toggle-switch input { opacity: 0; width: 0; height: 0; }
@@ -630,16 +630,16 @@
 
     .modal-card {
       background: var(--bg-card); border: 2px solid var(--gold-primary);
-      border-radius: 16px; padding: 25px; max-width: 480px; width: 92%;
-      text-align: center; box-shadow: 0 0 35px var(--gold-glow);
-      display: flex; flex-direction: column; gap: 15px;
+      border-radius: 16px; padding: 28px; max-width: 500px; width: 92%;
+      text-align: center; box-shadow: 0 0 45px var(--gold-glow);
+      display: flex; flex-direction: column; gap: 16px;
     }
 
-    .modal-icon { font-size: 2.8rem; color: var(--gold-light); }
+    .modal-icon { font-size: 3rem; color: var(--gold-light); }
 
     .camera-box-area {
       position: relative;
-      width: 100%; height: 260px;
+      width: 100%; height: 270px;
       background: #000000;
       border: 2px solid var(--gold-primary);
       border-radius: 12px;
@@ -711,7 +711,7 @@
     <div class="wizard-card">
       <div class="wizard-header">
         <div class="wizard-title">LIFE XP</div>
-        <div class="wizard-subtitle">Diseñador de Avatar - Fondo Blanco & Cortes Modernos Realistas</div>
+        <div class="wizard-subtitle">Diseñador de Avatar - Brazos Ajustados y Proporcionales</div>
       </div>
 
       <div class="wizard-body">
@@ -724,10 +724,17 @@
 
         <div class="quiz-questions-panel">
           <div class="quiz-step active" id="step-1">
-            <div class="question-title">1. Registro de Explorador</div>
+            <div class="question-title">1. Registro y Tipo de Explorador</div>
             <div>
               <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 5px;">Tu Nombre de Héroe / Alias</label>
               <input type="text" id="username-input" class="form-input" placeholder="Ej. Alex Gamer" value="">
+            </div>
+            <div style="margin-top: 10px;">
+              <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 5px;">Género / Estilo Base</label>
+              <div class="options-grid">
+                <button class="option-btn selected" onclick="setTrait('gender', 'masculino', this)">Masculino</button>
+                <button class="option-btn" onclick="setTrait('gender', 'femenino', this)">Femenino</button>
+              </div>
             </div>
             <div>
               <input type="hidden" id="student-code" class="form-input" value="XP-0000-2026">
@@ -752,17 +759,10 @@
           </div>
 
           <div class="quiz-step" id="step-3">
-            <div class="question-title">3. Cortes de Cabello Modernos & Realistas</div>
-            <label style="font-size: 0.8rem; color: var(--text-muted);">Estilo de Barbería / Estilista</label>
-            <div class="options-grid">
-              <button class="option-btn selected" onclick="setTrait('hairStyle', 'lowFade', this)">Low Fade + Texture</button>
-              <button class="option-btn" onclick="setTrait('hairStyle', 'frenchCrop', this)">French Crop / Fringe</button>
-              <button class="option-btn" onclick="setTrait('hairStyle', 'pompadour', this)">Pompadour / Quiff</button>
-              <button class="option-btn" onclick="setTrait('hairStyle', 'mulletModern', this)">Modern Mullet Fade</button>
-              <button class="option-btn" onclick="setTrait('hairStyle', 'buzzCut', this)">Buzz Cut + Lineup</button>
-              <button class="option-btn" onclick="setTrait('hairStyle', 'afroFade', this)">Afro Taper Fade</button>
-              <button class="option-btn" onclick="setTrait('hairStyle', 'manBunFade', this)">Man Bun + Undercut</button>
-              <button class="option-btn" onclick="setTrait('hairStyle', 'curtainWaves', this)">Middle Part / Waves</button>
+            <div class="question-title">3. Estilos de Cabello (Rostro 100% Despejado)</div>
+            <label style="font-size: 0.8rem; color: var(--text-muted);">Corte / Peinado</label>
+            <div class="options-grid" id="hair-options-container">
+              <!-- Dinámico según género -->
             </div>
             <label style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Color del Cabello</label>
             <div class="options-grid">
@@ -774,19 +774,9 @@
           </div>
 
           <div class="quiz-step" id="step-4">
-            <div class="question-title">4. Perfilado Facial y Accesorios</div>
-            <label style="font-size: 0.8rem; color: var(--text-muted);">Vello Facial y Perfilado</label>
-            <div class="options-grid">
-              <button class="option-btn selected" onclick="setTrait('beardStyle', 'none', this)">Limpio / Afeitado</button>
-              <button class="option-btn" onclick="setTrait('beardStyle', 'fadeBeard', this)">Barba Taper Fade</button>
-              <button class="option-btn" onclick="setTrait('beardStyle', 'goateed', this)">Candado / Perilla</button>
-              <button class="option-btn" onclick="setTrait('beardStyle', 'stubbleLine', this)">Sombra 3 Días</button>
-            </div>
-            <label style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Gafas</label>
-            <div class="options-grid">
-              <button class="option-btn selected" onclick="setTrait('glassesStyle', 'none', this)">Sin Gafas</button>
-              <button class="option-btn" onclick="setTrait('glassesStyle', 'square', this)">Cuadradas Urban</button>
-              <button class="option-btn" onclick="setTrait('glassesStyle', 'round', this)">Redondas Retro</button>
+            <div class="question-title" id="step4-title">4. Perfilado Facial y Accesorios</div>
+            <div id="step4-dynamic-content">
+              <!-- Dinámico según género -->
             </div>
           </div>
 
@@ -883,7 +873,7 @@
           <div class="user-profile-summary">
             <div class="avatar-container">
               <div class="avatar-img-hud">
-                <canvas id="hud-avatar-canvas" width="48" height="48"></canvas>
+                <canvas id="hud-avatar-canvas" width="50" height="50"></canvas>
               </div>
               <div class="lvl-badge" id="hud-lvl">LVL 0</div>
             </div>
@@ -949,8 +939,8 @@
                 <span>Ubicación Privada</span>
                 <i class="fa-solid fa-shield-halved"></i>
               </div>
-              <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px;">
-                Ley 1581 de 2012: Tu GPS está activo solo para validar misiones cercanas.
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 10px;">
+                Ley 1581 de 2012: Tu GPS está activo solo para validar misiones cercanas en Chapinero.
               </p>
               <div style="display: flex; justify-content: space-between; align-items: center;">
                 <span style="font-size: 0.8rem; font-weight: 600;">Geolocalización</span>
@@ -1015,8 +1005,8 @@
             </div>
 
             <div class="legal-panel">
-              <h3 style="color: var(--gold-light); font-family: 'Orbitron'; margin-bottom: 10px;">Cumplimiento Ley 1581 de 2012 y Decreto 1377 de 2013</h3>
-              <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 15px;">
+              <h3 style="color: var(--gold-light); font-family: 'Orbitron'; margin-bottom: 12px;">Cumplimiento Ley 1581 de 2012 y Decreto 1377 de 2013</h3>
+              <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">
                 La plataforma LIFE XP garantiza la protección absoluta de tus datos personales y de geolocalización. El mapa interactivo opera bajo el principio de transparencia y control voluntario:
               </p>
               <ul style="padding-left: 20px; color: var(--text-muted); font-size: 0.85rem; display: flex; flex-direction: column; gap: 8px;">
@@ -1095,12 +1085,14 @@
       audioEnabled: true, 
       gpsActive: true,
       avatarParams: {
+        gender: 'masculino',
         bodyType: 'athletic',
         skinTone: '#f3c19d',
         hairColor: '#1a110b',
         eyeColor: '#2b1704',
         hairStyle: 'lowFade',
         beardStyle: 'none',
+        makeupStyle: 'none',
         glassesStyle: 'none',
         clothingStyle: 'hoodie',
         clothingColor: '#0f172a',
@@ -1115,7 +1107,6 @@
     let currentCapturedImageData = null;
     let mediaStream = null;
 
-    // UBICACIONES EXACTAS COINCIDENTES CON LA REFERENCIA DE CHAPINERO / KONRAD LORENZ
     const unifiedLocations = [
       { id: 1, title: 'Fundación Universitaria Konrad Lorenz', type: 'universidad', tag: 'Universidad / Aliada', x: 500, y: 320, desc: 'Institución central de ingeniería, software y desarrollo tecnológico.', xp: 300, coins: 100, completed: false, photoEvidence: null, isStore: true, rewardTitle: 'Kit Software & Café Konrad', rewardCost: 350, rewardIcon: 'fa-bolt' },
       { id: 2, title: 'Movistar Arena - El Campín', type: 'parque', tag: 'Entretenimiento', x: 260, y: 300, desc: 'Gran escenario multipropósito de conciertos y eventos masivos.', xp: 250, coins: 80, completed: false, photoEvidence: null, isStore: false },
@@ -1142,6 +1133,67 @@
       { id: 110, title: 'Ruta Gastronómica Zona G', desc: 'Visita el corredor de la Zona G en Chapinero y sube tu comprobante.', type: 'solo', tag: 'Gourmet', xp: 280, coins: 95, completed: false, photoEvidence: null }
     ];
 
+    function updateWizardDynamicOptions() {
+      const hairContainer = document.getElementById('hair-options-container');
+      const step4Title = document.getElementById('step4-title');
+      const step4Content = document.getElementById('step4-dynamic-content');
+
+      if (gameState.avatarParams.gender === 'femenino') {
+        hairContainer.innerHTML = `
+          <button class="option-btn ${gameState.avatarParams.hairStyle === 'longStraight' ? 'selected' : ''}" onclick="setTrait('hairStyle', 'longStraight', this)">Largo Despejado</button>
+          <button class="option-btn ${gameState.avatarParams.hairStyle === 'wavyBob' ? 'selected' : ''}" onclick="setTrait('hairStyle', 'wavyBob', this)">Bob Elegante</button>
+          <button class="option-btn ${gameState.avatarParams.hairStyle === 'highPonytail' ? 'selected' : ''}" onclick="setTrait('hairStyle', 'highPonytail', this)">Coleta Alta</button>
+          <button class="option-btn ${gameState.avatarParams.hairStyle === 'braided' ? 'selected' : ''}" onclick="setTrait('hairStyle', 'braided', this)">Trenzas Pro</button>
+          <button class="option-btn ${gameState.avatarParams.hairStyle === 'curtainFringe' ? 'selected' : ''}" onclick="setTrait('hairStyle', 'curtainFringe', this)">Flequillo Abierto</button>
+        `;
+        if (!['longStraight', 'wavyBob', 'highPonytail', 'braided', 'curtainFringe'].includes(gameState.avatarParams.hairStyle)) {
+          gameState.avatarParams.hairStyle = 'longStraight';
+        }
+
+        step4Title.innerText = "4. Estilo, Maquillaje y Accesorios";
+        step4Content.innerHTML = `
+          <label style="font-size: 0.8rem; color: var(--text-muted);">Maquillaje y Labios</label>
+          <div class="options-grid">
+            <button class="option-btn ${gameState.avatarParams.makeupStyle === 'none' ? 'selected' : ''}" onclick="setTrait('makeupStyle', 'none', this)">Natural</button>
+            <button class="option-btn ${gameState.avatarParams.makeupStyle === 'gloss' ? 'selected' : ''}" onclick="setTrait('makeupStyle', 'gloss', this)">Gloss Suave</button>
+            <button class="option-btn ${gameState.avatarParams.makeupStyle === 'glam' ? 'selected' : ''}" onclick="setTrait('makeupStyle', 'glam', this)">Glam / Delineado</button>
+          </div>
+          <label style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Gafas</label>
+          <div class="options-grid">
+            <button class="option-btn ${gameState.avatarParams.glassesStyle === 'none' ? 'selected' : ''}" onclick="setTrait('glassesStyle', 'none', this)">Sin Gafas</button>
+            <button class="option-btn ${gameState.avatarParams.glassesStyle === 'square' ? 'selected' : ''}" onclick="setTrait('glassesStyle', 'square', this)">Cuadradas Urban</button>
+            <button class="option-btn ${gameState.avatarParams.glassesStyle === 'round' ? 'selected' : ''}" onclick="setTrait('glassesStyle', 'round', this)">Redondas Retro</button>
+          </div>
+        `;
+      } else {
+        hairContainer.innerHTML = `
+          <button class="option-btn ${gameState.avatarParams.hairStyle === 'lowFade' ? 'selected' : ''}" onclick="setTrait('hairStyle', 'lowFade', this)">Low Fade + Texture</button>
+          <button class="option-btn ${gameState.avatarParams.hairStyle === 'frenchCrop' ? 'selected' : ''}" onclick="setTrait('hairStyle', 'frenchCrop', this)">French Crop / Fringe</button>
+          <button class="option-btn ${gameState.avatarParams.hairStyle === 'pompadour' ? 'selected' : ''}" onclick="setTrait('hairStyle', 'pompadour', this)">Pompadour / Quiff</button>
+          <button class="option-btn ${gameState.avatarParams.hairStyle === 'mulletModern' ? 'selected' : ''}" onclick="setTrait('hairStyle', 'mulletModern', this)">Modern Mullet Fade</button>
+          <button class="option-btn ${gameState.avatarParams.hairStyle === 'buzzCut' ? 'selected' : ''}" onclick="setTrait('hairStyle', 'buzzCut', this)">Buzz Cut + Lineup</button>
+          <button class="option-btn ${gameState.avatarParams.hairStyle === 'afroFade' ? 'selected' : ''}" onclick="setTrait('hairStyle', 'afroFade', this)">Afro Taper Fade</button>
+        `;
+
+        step4Title.innerText = "4. Perfilado Facial y Accesorios";
+        step4Content.innerHTML = `
+          <label style="font-size: 0.8rem; color: var(--text-muted);">Vello Facial y Perfilado</label>
+          <div class="options-grid">
+            <button class="option-btn ${gameState.avatarParams.beardStyle === 'none' ? 'selected' : ''}" onclick="setTrait('beardStyle', 'none', this)">Limpio / Afeitado</button>
+            <button class="option-btn ${gameState.avatarParams.beardStyle === 'fadeBeard' ? 'selected' : ''}" onclick="setTrait('beardStyle', 'fadeBeard', this)">Barba Taper Fade</button>
+            <button class="option-btn ${gameState.avatarParams.beardStyle === 'goateed' ? 'selected' : ''}" onclick="setTrait('beardStyle', 'goateed', this)">Candado / Perilla</button>
+            <button class="option-btn ${gameState.avatarParams.beardStyle === 'stubbleLine' ? 'selected' : ''}" onclick="setTrait('beardStyle', 'stubbleLine', this)">Sombra 3 Días</button>
+          </div>
+          <label style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Gafas</label>
+          <div class="options-grid">
+            <button class="option-btn ${gameState.avatarParams.glassesStyle === 'none' ? 'selected' : ''}" onclick="setTrait('glassesStyle', 'none', this)">Sin Gafas</button>
+            <button class="option-btn ${gameState.avatarParams.glassesStyle === 'square' ? 'selected' : ''}" onclick="setTrait('glassesStyle', 'square', this)">Cuadradas Urban</button>
+            <button class="option-btn ${gameState.avatarParams.glassesStyle === 'round' ? 'selected' : ''}" onclick="setTrait('glassesStyle', 'round', this)">Redondas Retro</button>
+          </div>
+        `;
+      }
+    }
+
     function renderAIAvatar(canvasId, params) {
       const canvas = document.getElementById(canvasId);
       if (!canvas) return;
@@ -1158,7 +1210,7 @@
         ctx.fillStyle = params.skinTone;
         ctx.beginPath(); ctx.ellipse(w/2, h*0.5, w*0.32, h*0.38, 0, 0, Math.PI*2); ctx.fill();
 
-        drawRealisticHair(ctx, w/2, h*0.35, w*0.34, h*0.32, params);
+        drawClearFaceHair(ctx, w/2, h*0.35, w*0.34, h*0.32, params);
         if (params.glassesStyle !== 'none') drawGlasses(ctx, w/2, h*0.48, w*0.26, params);
         return;
       }
@@ -1172,154 +1224,167 @@
       ctx.fillStyle = shadowGrad;
       ctx.beginPath(); ctx.ellipse(w/2, h*0.93, w*0.38, h*0.04, 0, 0, Math.PI*2); ctx.fill();
 
-      let bw = (params.bodyType === 'robust') ? 1.18 : ((params.bodyType === 'slim') ? 0.85 : 1.0);
+      let isFem = params.gender === 'femenino';
+      let bodyScale = (params.bodyType === 'robust') ? 1.12 : ((params.bodyType === 'slim') ? 0.9 : 1.0);
 
+      // Zapatos / Sneakers
       ctx.fillStyle = params.shoesColor;
       ctx.beginPath();
-      ctx.roundRect(w*0.35 - w*0.05*bw, h*0.88, w*0.14*bw, h*0.045, [6]);
-      ctx.roundRect(w*0.65 - w*0.09*bw, h*0.88, w*0.14*bw, h*0.045, [6]);
+      ctx.roundRect(w*0.36 - 5, h*0.88, 32, 16, [6]);
+      ctx.roundRect(w*0.58 - 3, h*0.88, 32, 16, [6]);
       ctx.fill();
 
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(w*0.35 - w*0.05*bw, h*0.915, w*0.14*bw, h*0.01);
-      ctx.fillRect(w*0.65 - w*0.09*bw, h*0.915, w*0.14*bw, h*0.01);
-
+      // Pantalones o falda estilizada
       ctx.fillStyle = params.pantsColor;
-      ctx.fillRect(w*0.34, h*0.58, w*0.13*bw, h*0.31);
-      ctx.fillRect(w*0.53, h*0.58, w*0.13*bw, h*0.31);
+      if (isFem) {
+        ctx.beginPath();
+        ctx.moveTo(w*0.38, h*0.58); ctx.lineTo(w*0.62, h*0.58);
+        ctx.lineTo(w*0.68, h*0.85); ctx.lineTo(w*0.32, h*0.85);
+        ctx.closePath();
+        ctx.fill();
+      } else {
+        ctx.fillRect(w*0.36, h*0.58, 22 * bodyScale, h*0.31);
+        ctx.fillRect(w*0.52, h*0.58, 22 * bodyScale, h*0.31);
+      }
 
-      ctx.fillStyle = 'rgba(0,0,0,0.15)';
-      ctx.fillRect(w*0.42, h*0.6, w*0.03, h*0.28);
-      ctx.fillRect(w*0.53, h*0.6, w*0.03, h*0.28);
-
+      // Torso / Ropa Superior con ancho proporcional y fijo para evitar separación de brazos
+      const torsoW = 86 * bodyScale;
+      const torsoX = w/2 - torsoW/2;
       ctx.fillStyle = params.clothingColor;
       ctx.beginPath();
-      ctx.roundRect(w*0.27/bw, h*0.3, w*0.46*bw, h*0.3, [14]);
+      ctx.roundRect(torsoX, h*0.3, torsoW, h*0.3, [14]);
       ctx.fill();
 
       if (params.clothingStyle === 'hoodie') {
         ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.moveTo(w*0.5, h*0.33); ctx.lineTo(w*0.5, h*0.59); ctx.stroke();
         ctx.fillStyle = 'rgba(0,0,0,0.1)';
-        ctx.roundRect(w*0.35, h*0.46, w*0.3, h*0.11, [6]); ctx.fill();
+        ctx.roundRect(w*0.5 - torsoW*0.35, h*0.46, torsoW*0.7, h*0.11, [6]); ctx.fill();
       } else if (params.clothingStyle === 'suit') {
         ctx.fillStyle = '#ffffff';
         ctx.beginPath(); ctx.moveTo(w*0.42, h*0.3); ctx.lineTo(w*0.5, h*0.42); ctx.lineTo(w*0.58, h*0.3); ctx.fill();
-        ctx.fillStyle = '#ef4444'; ctx.fillRect(w*0.485, h*0.36, w*0.03, h*0.14);
+        ctx.fillStyle = isFem ? '#ec4899' : '#ef4444'; 
+        ctx.fillRect(w*0.485, h*0.36, w*0.03, h*0.14);
       }
 
+      // Brazos alineados exactamente a los bordes del torso
       ctx.fillStyle = params.clothingColor;
-      ctx.fillRect(w*0.20/bw, h*0.31, w*0.08*bw, h*0.23);
-      ctx.fillRect(w*0.72*bw, h*0.31, w*0.08*bw, h*0.23);
+      ctx.fillRect(torsoX - 16, h*0.31, 16, h*0.23);
+      ctx.fillRect(torsoX + torsoW, h*0.31, 16, h*0.23);
 
+      // Manos
       ctx.fillStyle = params.skinTone;
       ctx.beginPath();
-      ctx.arc(w*0.24/bw, h*0.55, w*0.04, 0, Math.PI*2);
-      ctx.arc(w*0.76*bw, h*0.55, w*0.04, 0, Math.PI*2);
+      ctx.arc(torsoX - 8, h*0.55, 7, 0, Math.PI*2);
+      ctx.arc(torsoX + torsoW + 8, h*0.55, 7, 0, Math.PI*2);
       ctx.fill();
 
+      // Cuello
       ctx.fillStyle = params.skinTone;
-      ctx.fillRect(w*0.44, h*0.24, w*0.12, h*0.07);
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
-      ctx.fillRect(w*0.44, h*0.28, w*0.12, h*0.03);
+      ctx.fillRect(w*0.45, h*0.24, w*0.1, h*0.07);
 
+      // Cabeza
       ctx.fillStyle = params.skinTone;
       ctx.beginPath();
-      ctx.ellipse(w/2, h*0.19, w*0.15, h*0.095, 0, 0, Math.PI*2);
+      ctx.ellipse(w/2, h*0.19, w*0.14, w*0.16, 0, 0, Math.PI*2);
       ctx.fill();
 
+      // Ojos y cejas despejadas
       ctx.fillStyle = '#ffffff';
       ctx.beginPath();
-      ctx.ellipse(w*0.43, h*0.18, w*0.032, h*0.016, 0, 0, Math.PI*2);
-      ctx.ellipse(w*0.57, h*0.18, w*0.032, h*0.016, 0, 0, Math.PI*2);
+      ctx.ellipse(w*0.43, h*0.18, w*0.03, w*0.015, 0, 0, Math.PI*2);
+      ctx.ellipse(w*0.57, h*0.18, w*0.03, w*0.015, 0, 0, Math.PI*2);
       ctx.fill();
 
       ctx.fillStyle = params.eyeColor;
       ctx.beginPath();
-      ctx.arc(w*0.43, h*0.18, w*0.016, 0, Math.PI*2);
-      ctx.arc(w*0.57, h*0.18, w*0.016, 0, Math.PI*2);
+      ctx.arc(w*0.43, h*0.18, w*0.015, 0, Math.PI*2);
+      ctx.arc(w*0.57, h*0.18, w*0.015, 0, Math.PI*2);
       ctx.fill();
 
-      ctx.strokeStyle = params.hairColor; ctx.lineWidth = 2.5;
-      ctx.beginPath(); ctx.moveTo(w*0.38, h*0.16); ctx.lineTo(w*0.47, h*0.165); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(w*0.53, h*0.165); ctx.lineTo(w*0.62, h*0.16); ctx.stroke();
+      if (isFem) {
+        ctx.strokeStyle = '#e11d48'; ctx.lineWidth = 1.8;
+        ctx.beginPath(); ctx.arc(w/2, h*0.225, w*0.03, 0.1, Math.PI - 0.1); ctx.stroke();
 
-      ctx.strokeStyle = '#b96b54'; ctx.lineWidth = 1.8;
-      ctx.beginPath(); ctx.arc(w/2, h*0.22, w*0.04, 0.2, Math.PI - 0.2); ctx.stroke();
+        if (params.makeupStyle === 'gloss') {
+          ctx.fillStyle = 'rgba(244, 63, 94, 0.4)';
+          ctx.beginPath(); ctx.ellipse(w*0.4, h*0.19, w*0.035, w*0.018, 0, 0, Math.PI*2); ctx.fill();
+          ctx.beginPath(); ctx.ellipse(w*0.6, h*0.19, w*0.035, w*0.018, 0, 0, Math.PI*2); ctx.fill();
+        } else if (params.makeupStyle === 'glam') {
+          ctx.fillStyle = 'rgba(190, 24, 93, 0.5)';
+          ctx.beginPath(); ctx.ellipse(w*0.4, h*0.19, w*0.04, w*0.02, 0, 0, Math.PI*2); ctx.fill();
+          ctx.beginPath(); ctx.ellipse(w*0.6, h*0.19, w*0.04, w*0.02, 0, 0, Math.PI*2); ctx.fill();
+          ctx.strokeStyle = '#000'; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(w*0.4, h*0.165); ctx.lineTo(w*0.36, h*0.16); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(w*0.6, h*0.165); ctx.lineTo(w*0.64, h*0.16); ctx.stroke();
+        }
+      } else {
+        ctx.strokeStyle = '#b96b54'; ctx.lineWidth = 1.8;
+        ctx.beginPath(); ctx.arc(w/2, h*0.22, w*0.04, 0.2, Math.PI - 0.2); ctx.stroke();
 
-      if (params.beardStyle !== 'none') {
-        ctx.fillStyle = params.hairColor;
-        if (params.beardStyle === 'fadeBeard') {
-          ctx.globalAlpha = 0.8;
-          ctx.beginPath(); ctx.arc(w/2, h*0.22, w*0.08, 0, Math.PI); ctx.fill();
-          ctx.globalAlpha = 1.0;
-        } else if (params.beardStyle === 'stubbleLine') {
-          ctx.fillStyle = 'rgba(0,0,0,0.2)';
-          ctx.beginPath(); ctx.arc(w/2, h*0.22, w*0.08, 0, Math.PI); ctx.fill();
-        } else if (params.beardStyle === 'goateed') {
-          ctx.fillRect(w*0.46, h*0.22, w*0.08, h*0.025);
+        if (params.beardStyle !== 'none') {
+          ctx.fillStyle = params.hairColor;
+          if (params.beardStyle === 'fadeBeard') {
+            ctx.globalAlpha = 0.8;
+            ctx.beginPath(); ctx.arc(w/2, h*0.22, w*0.08, 0, Math.PI); ctx.fill();
+            ctx.globalAlpha = 1.0;
+          } else if (params.beardStyle === 'stubbleLine') {
+            ctx.fillStyle = 'rgba(0,0,0,0.2)';
+            ctx.beginPath(); ctx.arc(w/2, h*0.22, w*0.08, 0, Math.PI); ctx.fill();
+          } else if (params.beardStyle === 'goateed') {
+            ctx.fillRect(w*0.46, h*0.22, w*0.08, h*0.025);
+          }
         }
       }
 
       if (params.glassesStyle !== 'none') drawGlasses(ctx, w/2, h*0.18, w*0.15, params);
-      drawRealisticHair(ctx, w/2, h*0.14, w*0.16, h*0.08, params);
+      drawClearFaceHair(ctx, w/2, h*0.13, w*0.16, h*0.08, params);
     }
 
-    function drawRealisticHair(ctx, cx, cy, hw, hh, params) {
+    function drawClearFaceHair(ctx, cx, cy, hw, hh, params) {
       ctx.fillStyle = params.hairColor;
-      const fadeGrad = ctx.createLinearGradient(cx - hw, cy, cx + hw, cy);
-      fadeGrad.addColorStop(0, 'rgba(0,0,0,0.2)');
-      fadeGrad.addColorStop(0.3, params.hairColor);
-      fadeGrad.addColorStop(0.7, params.hairColor);
-      fadeGrad.addColorStop(1, 'rgba(0,0,0,0.2)');
-
-      if (params.hairStyle === 'lowFade') {
-        ctx.fillStyle = fadeGrad;
-        ctx.beginPath(); ctx.ellipse(cx, cy, hw*0.9, hh*0.8, 0, Math.PI, Math.PI*2); ctx.fill();
-        ctx.fillStyle = params.hairColor;
-        ctx.beginPath(); ctx.ellipse(cx, cy - hh*0.3, hw*0.8, hh*0.6, 0, Math.PI, Math.PI*2); ctx.fill();
-      } 
-      else if (params.hairStyle === 'frenchCrop') {
-        ctx.fillStyle = params.hairColor;
-        ctx.fillRect(cx - hw*0.95, cy - hh*0.6, hw*1.9, hh*0.7);
-        ctx.fillStyle = 'rgba(0,0,0,0.3)';
-        ctx.fillRect(cx - hw*0.95, cy, hw*0.2, hh*0.4);
-        ctx.fillRect(cx + hw*0.75, cy, hw*0.2, hh*0.4);
-      } 
-      else if (params.hairStyle === 'pompadour') {
-        ctx.beginPath();
-        ctx.moveTo(cx - hw*0.9, cy + hh*0.2);
-        ctx.quadraticCurveTo(cx - hw*0.8, cy - hh*1.8, cx, cy - hh*2.0);
-        ctx.quadraticCurveTo(cx + hw*0.8, cy - hh*1.8, cx + hw*0.9, cy + hh*0.2);
-        ctx.fill();
-      } 
-      else if (params.hairStyle === 'mulletModern') {
-        ctx.beginPath();
-        ctx.ellipse(cx, cy - hh*0.2, hw*0.95, hh*0.8, 0, Math.PI, Math.PI*2);
-        ctx.fillRect(cx - hw*1.1, cy, hw*0.35, hh*1.8);
-        ctx.fillRect(cx + hw*0.75, cy, hw*0.35, hh*1.8);
-        ctx.fill();
-      } 
-      else if (params.hairStyle === 'buzzCut') {
-        ctx.fillStyle = 'rgba(0,0,0,0.35)';
-        ctx.beginPath(); ctx.ellipse(cx, cy, hw*0.88, hh*0.75, 0, Math.PI, Math.PI*2); ctx.fill();
-      } 
-      else if (params.hairStyle === 'afroFade') {
-        ctx.beginPath(); ctx.arc(cx, cy - hh*0.2, hw*1.1, 0, Math.PI*2); ctx.fill();
-        ctx.fillStyle = 'rgba(255,255,255,0.1)';
-        ctx.beginPath(); ctx.arc(cx - 10, cy - 15, 6, 0, Math.PI*2); ctx.fill();
-        ctx.beginPath(); ctx.arc(cx + 10, cy - 20, 8, 0, Math.PI*2); ctx.fill();
-      } 
-      else if (params.hairStyle === 'manBunFade') {
-        ctx.beginPath(); ctx.ellipse(cx, cy, hw*0.85, hh*0.7, 0, Math.PI, Math.PI*2); ctx.fill();
-        ctx.beginPath(); ctx.arc(cx, cy - hh*1.2, hw*0.45, 0, Math.PI*2); ctx.fill();
-      } 
-      else if (params.hairStyle === 'curtainWaves') {
-        ctx.beginPath();
-        ctx.arc(cx, cy, hw*0.95, Math.PI*0.85, Math.PI*2.15);
-        ctx.fillRect(cx - hw*1.1, cy, hw*0.45, hh*1.6);
-        ctx.fillRect(cx + hw*0.65, cy, hw*0.45, hh*1.6);
-        ctx.fill();
+      
+      if (params.gender === 'femenino') {
+        if (params.hairStyle === 'longStraight') {
+          ctx.beginPath(); ctx.ellipse(cx, cy - hh*0.3, hw*0.95, hh*0.7, 0, Math.PI, Math.PI*2); ctx.fill();
+          ctx.fillRect(cx - hw*1.2, cy - hh*0.3, hw*0.38, hh*3.4);
+          ctx.fillRect(cx + hw*0.82, cy - hh*0.3, hw*0.38, hh*3.4);
+        } else if (params.hairStyle === 'wavyBob') {
+          ctx.beginPath(); ctx.ellipse(cx, cy - hh*0.2, hw*1.05, hh*0.8, 0, Math.PI, Math.PI*2); ctx.fill();
+          ctx.fillRect(cx - hw*1.15, cy, hw*0.35, hh*1.8);
+          ctx.fillRect(cx + hw*0.8, cy, hw*0.35, hh*1.8);
+        } else if (params.hairStyle === 'highPonytail') {
+          ctx.beginPath(); ctx.ellipse(cx, cy - hh*0.3, hw*0.85, hh*0.6, 0, Math.PI, Math.PI*2); ctx.fill();
+          ctx.beginPath(); ctx.arc(cx + hw*0.5, cy - hh*1.5, hw*0.45, 0, Math.PI*2); ctx.fill();
+        } else if (params.hairStyle === 'braided') {
+          ctx.beginPath(); ctx.ellipse(cx, cy - hh*0.3, hw*0.9, hh*0.65, 0, Math.PI, Math.PI*2); ctx.fill();
+          ctx.fillRect(cx - hw*0.25, cy + hh*0.4, hw*0.5, hh*3.0);
+        } else {
+          ctx.beginPath(); ctx.ellipse(cx, cy - hh*0.3, hw*0.95, hh*0.7, 0, Math.PI, Math.PI*2); ctx.fill();
+          ctx.clearRect(cx - hw*0.3, cy - hh*0.5, hw*0.6, hh*0.8);
+        }
+      } else {
+        if (params.hairStyle === 'lowFade') {
+          ctx.beginPath(); ctx.ellipse(cx, cy, hw*0.9, hh*0.8, 0, Math.PI, Math.PI*2); ctx.fill();
+        } else if (params.hairStyle === 'frenchCrop') {
+          ctx.fillRect(cx - hw*0.9, cy - hh*0.6, hw*1.8, hh*0.6);
+        } else if (params.hairStyle === 'pompadour') {
+          ctx.beginPath();
+          ctx.moveTo(cx - hw*0.85, cy);
+          ctx.quadraticCurveTo(cx - hw*0.7, cy - hh*1.6, cx, cy - hh*1.8);
+          ctx.quadraticCurveTo(cx + hw*0.7, cy - hh*1.6, cx + hw*0.85, cy);
+          ctx.fill();
+        } else if (params.hairStyle === 'mulletModern') {
+          ctx.beginPath(); ctx.ellipse(cx, cy - hh*0.2, hw*0.9, hh*0.75, 0, Math.PI, Math.PI*2);
+          ctx.fillRect(cx - hw*1.05, cy, hw*0.3, hh*1.8);
+          ctx.fillRect(cx + hw*0.75, cy, hw*0.3, hh*1.8);
+          ctx.fill();
+        } else if (params.hairStyle === 'buzzCut') {
+          ctx.fillStyle = 'rgba(0,0,0,0.35)';
+          ctx.beginPath(); ctx.ellipse(cx, cy, hw*0.85, hh*0.7, 0, Math.PI, Math.PI*2); ctx.fill();
+        } else {
+          ctx.beginPath(); ctx.arc(cx, cy - hh*0.2, hw*1.05, 0, Math.PI*2); ctx.fill();
+        }
       }
     }
 
@@ -1343,6 +1408,16 @@
         btnEl.parentElement.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
         btnEl.classList.add('selected');
       }
+
+      if (key === 'gender') {
+        if (value === 'femenino') {
+          gameState.avatarParams.hairStyle = 'longStraight';
+        } else {
+          gameState.avatarParams.hairStyle = 'lowFade';
+        }
+        updateWizardDynamicOptions();
+      }
+
       renderAIAvatar('quiz-avatar-canvas', gameState.avatarParams);
     }
 
@@ -1453,36 +1528,27 @@
       mapCanvas.height = 1200;
       const ctx = mapCanvas.getContext('2d');
       
-      // Fondo gris oscuro/satelital idéntico al estilo de la referencia de Chapinero
       ctx.fillStyle = '#1c222d';
       ctx.fillRect(0,0,1200,1200);
 
-      // Cerros orientales oscuros a la derecha (Montañas de Bogotá)
       ctx.fillStyle = '#11161f';
       ctx.fillRect(800, 0, 400, 1200);
 
-      // Parques y zonas verdes (Parque de los Novios, Parque de los Hippies)
       ctx.fillStyle = '#263a29';
-      ctx.beginPath(); ctx.roundRect(150, 100, 220, 160, [18]); ctx.fill(); // Parque de los Novios
-      ctx.beginPath(); ctx.roundRect(400, 380, 150, 120, [15]); ctx.fill(); // Parque de los Hippies
+      ctx.beginPath(); ctx.roundRect(150, 100, 220, 160, [18]); ctx.fill(); 
+      ctx.beginPath(); ctx.roundRect(400, 380, 150, 120, [15]); ctx.fill(); 
 
-      // Avenidas principales longitudinales y diagonales (Autopista Norte / NQS, Av. Caracas, Carrera 7, Calle 53, 63, 68)
       ctx.strokeStyle = '#2d3748';
       ctx.lineWidth = 16;
       ctx.beginPath();
-      // NQS / Autopista Norte longitudinal
       ctx.moveTo(250, 0); ctx.lineTo(250, 1200);
-      // Av. Caracas
       ctx.moveTo(480, 0); ctx.lineTo(480, 1200);
-      // Carrera 7 / Oriental
       ctx.moveTo(700, 0); ctx.lineTo(700, 1200);
-      // Calles transversales
       ctx.moveTo(0, 250); ctx.lineTo(1200, 250);
       ctx.moveTo(0, 450); ctx.lineTo(1200, 450);
       ctx.moveTo(0, 650); ctx.lineTo(1200, 650);
       ctx.stroke();
 
-      // Cuadros de manzanas urbanas detalladas de Chapinero
       ctx.fillStyle = '#222b38';
       for(let x=50; x<750; x+=75) {
         for(let y=50; y<1150; y+=65) {
@@ -1497,7 +1563,7 @@
       map.fitBounds(bounds);
 
       renderMapMarkers('all');
-      createAvatarMapMarker(500, 320); // Posición inicial en Konrad Lorenz
+      createAvatarMapMarker(500, 320);
     }
 
     function createAvatarMapMarker(x, y) {
@@ -1826,6 +1892,7 @@
     }
 
     window.onload = function() {
+      updateWizardDynamicOptions();
       renderAIAvatar('quiz-avatar-canvas', gameState.avatarParams);
     };
   </script>
